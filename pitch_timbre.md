@@ -1,6 +1,6 @@
 ## The problem
 
-调变的大的音声音听起来失真。
+音调变的太高声音听起来失真。
 
 [Why does changing the pitch of voice sound weird?](https://www.quora.com/Why-does-changing-the-pitch-of-voice-sound-weird)
 

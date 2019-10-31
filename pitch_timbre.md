@@ -22,7 +22,7 @@
 
 A harmonizer is a type of pitch shifter that combines the pitch-shifted signal with the original to create a two or more note harmony.
 
-+ [Creating Vocal Harmony Using Pitch Shifting Software](https://music.tutsplus.com/tutorials/creating-vocal-harmony-using-pitch-shifting-software--cms-20809)
+[Creating Vocal Harmony Using Pitch Shifting Software](https://music.tutsplus.com/tutorials/creating-vocal-harmony-using-pitch-shifting-software--cms-20809)
 
 #### Auto-Tune and Pitch correction
 

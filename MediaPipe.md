@@ -136,6 +136,7 @@ class PacketClonerCalculator : public CalculatorBase {
 REGISTER_CALCULATOR(PacketClonerCalculator);
 } 
 ```
+
 + GetContract - 定义输入和输出数据的类型
 + Open - 初始化变量
 + Process - 先储存输入数据再判断是否有触发数据，有的话就输出数据，没有就允许接受下个输入数据。
@@ -146,7 +147,9 @@ REGISTER_CALCULATOR(PacketClonerCalculator);
 
 MediaPipe提供了[MediaPipe Visualizer](https://viz.mediapipe.dev/)在线工具，它帮助用户了解其计算单元图形的结构并了解其机器学习推理管道的整体行为。图形视图允许用户在编辑器中直接修改或上传图形配置文件加载到编辑器，有一个视频剪切计算单元的图如下所示：
 
+
 ![Object detection](MP_images/graph2.png)
+
 
 可以看到图显示在左边区域它是一个只读区域，通过鼠标可以缩放并拖动图像但不能编辑。右边是文本编辑区可以添加或编辑代码来修改图，这里的代码就是GraphConfig，它可以被保存为一个文本文件然后通过Graph的API来加载这个图。下面的代码是我们又添加一个Video Flip的计算单元。更新后的图如下所示：
 
@@ -168,7 +171,6 @@ node {
 ```
 
 ![Object detection](MP_images/graph3.png)
-
 
 
 ## 目前开源基于MediaPipe实现的实例

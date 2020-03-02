@@ -1,4 +1,4 @@
-# MediaPipe - Google开源跨平台机器学习框架介绍
+# MediaPipe - Google开源跨平台机器学习框架
 
 MediaPipe是一款由Google开发并开源的流媒体数据处理的机器学习应用开发框架。它是一个基于图的框架，用于构建使用了多种形式的数据源，如视频、音频、传感器以及任何时间序列的数据的机器学习管道。 MediaPipe是跨平台的可以运行在嵌入式平台(树莓派等)，移动设备(iOS和Android)，工作站和服务器上，并支持移动端GPU加速。 使用MediaPipe，可以将机器学习管道构建为一个图形的模块化组件，包括推理模型和媒体处理功能。 
 
@@ -54,6 +54,34 @@ MediaPipe开源了多个由谷歌内部团队实现的计算单元的同时，�
 
 图是一个有向的数据流图，数据流经计算单元，开发者可以自定义计算单元。 图形描述通过GraphConfig协议指定的，然后使用Graph对象运行。
 可以通过更新GraphConfig文件来更改添加或删除组件的管道。 开发者还可以在这个文件里配置全局级别设置，以修改图的执行和资源消耗。 这对于调整不同平台（例如台式机和移动设备）上图形的性能非常有用。
+
+## 可视化图编辑器
+
+MediaPipe提供了[MediaPipe Visualizer](https://viz.mediapipe.dev/)在线工具，它帮助用户了解其计算单元图形的结构并了解其机器学习推理管道的整体行为。图形视图允许用户在编辑器中直接修改或上传图形配置文件加载到编辑器，有一个视频剪切计算单元的图如下所示：
+
+![Object detection](MP_images/graph2.png)
+
+可以看到图显示在左边区域它是一个只读区域，通过鼠标可以缩放并拖动图像但不能编辑。右边是文本编辑区可以添加或编辑代码来修改图，这里的代码是GraphConfig代码。下面的代码是我们有添加一个Video Flip的计算单元。更新后的图如下所示
+
+```
+input_stream: "input"
+output_stream: "output"
+
+node {
+  calculator: "VideoClipCalculator"
+  input_stream: "IN:input"
+  output_stream: "clippedVideoOutput"
+}
+
+node {
+  calculator: "VideoFlipCalculator"
+  input_stream: "clippedVideoOutput"
+  output_stream: "OUT:output"
+}
+```
+
+![Object detection](MP_images/graph3.png)
+
 
 ## 目前开源基于MediaPipe实现的实例
 

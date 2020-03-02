@@ -172,17 +172,34 @@ node {
 
 ![Object detection](MP_images/graph3.png)
 
+## 目前基于MediaPipe实现的实例
 
-## 目前开源基于MediaPipe实现的实例
+下面这些都是利用MediaPipe框架实现的应用，处理最后一个其余都是可以跨平台运行的。
 
 + 人脸侦测(Face Detection)
 + 多手追踪(Multi-hand Tracking)
 + 单手追踪(Hand Tracking)
-+ 头发(Hair Segmentation）
++ 头发分割(Hair Segmentation）
 + 物体识别(Object Detection)
 + 物体识别并追踪(Object Detection and Tracking)
 + 自动视频裁剪(AutoFlip)
 
-## 物体识别实现
+## 物体识别
 
+这里主要说一下物体识别是怎么用MediaPipe实现的。下图是物体识别的MeidaPipe图：
+
+![Object detection](MP_images/graph4.png)
+
+我们从输入到输出说明一下每个计算单元都是干什么的。
+
++ input_video - 输入视频
++ FlowLimiter - 帧限流计算单元，它会接受下面计算单元的一个输入表示可以处理下一帧了，要不会丢去当前的视频帧。这样就可以控制处理不会因为处理的慢而造成问题。
++ TFLiteConverter - 将输入图片转化成TFLite模型可处理的张量
++ TFLiteInference - 模型推理
++ TFLiteTensorsToDetections - 将模型的输出转化成侦测结果
++ NoMaxSuppression - No Max Suppression算法处理
++ DetectionLabelIdToText - 将检测结果转化成对应的物体名称
++ DetectionsToRenderData - 将检测的结果的数据转化成渲染数据
++ AnnotationOverlay - 标注数据叠加到当前视频帧
++ Output_video - 最终输出的视频帧
 

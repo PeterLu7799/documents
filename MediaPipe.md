@@ -49,10 +49,98 @@ MediaPipe的核心框架由C++实现，并提供Java以及Objective C等语言�
 + 图(Graph) - 是有向的图，数据包从数据源(Graph Input Stream)流入图直至在输出结点(Graph Output Stream)离开。
 + 图配置(GraphConfig) - 是描述图的拓扑和功能的配置文件。 
 
-MediaPipe开源了多个由谷歌内部团队实现的计算单元的同时，也向用户提供定制新计算单元的接口。创建一个新的计算单元，需要用户继承CalculatorBase类并实现Open，Process，Close方法去分别定义计算单元的初始化方法，数据流的处理方法，以及在计算单元完成所有运算后的关闭步骤。为了方便用户在多个图中复用已有的通用组件，例如图像数据的预处理、模型的推理以及图像的渲染等，MediaPipe引入了子图(Subgraph)的概念。因此，一个MediaPipe图中的节点既可以是计算单元，亦可以是子图。子图在不同图内的复用，方便了大规模模块化的应用搭建。
+MediaPipe开源了多个由谷歌内部团队实现的计算单元，也向用户提供定制新计算单元的接口。为了方便用户在多个图中复用已有的通用组件，例如图像数据的预处理、模型的推理以及图像的渲染等，MediaPipe引入了子图(Subgraph)的概念。因此，一个MediaPipe图中的节点既可以是计算单元，亦可以是子图。子图在不同图内的复用，方便了大规模模块化的应用搭建。
 
 图是一个有向的数据流图，数据流经计算单元，开发者可以自定义计算单元。 图形描述通过GraphConfig协议指定的，然后使用Graph对象运行。
 可以通过更新GraphConfig文件来更改添加或删除组件的管道。 开发者还可以在这个文件里配置全局级别设置，以修改图的执行和资源消耗。 这对于调整不同平台（例如台式机和移动设备）上图形的性能非常有用。
+
+## 计算单元
+计算单元是一个C++类，创建一个计算单元需要用户继承于CalculatorBase类并实现GetContract, Open, Process, Close方法去分别定义计算单元的初始化，数据流的处理，以及在计算单元完成所有运算后的关闭步骤。假设我们有一个房间，里面有麦克风，光传感器和摄像机，用于收集感官数据。 每个传感器都独立运行，并间歇性地收集数据，这些触感器收集数据不是同步的。每个传感器的输出为：
+
++ 麦克风=房间中声音的分贝（整数）
++ 光线传感器=房间的亮度（整数）
++ 摄像机=房间的RGB图像帧（ImageFrame）
+
+我们的这个感知管道要处理来自这3个传感器的数据，当然不是每个传感器有数据就处理，我们要在来自摄像机的图像帧数据到来时与最后一次收集的麦克风数据和光传感器数据作为一帧数据进行处理处理。
+
+PacketClonerCalculator计算单元在条件满足时把输入数据的克隆体输出。当到达的数据包的时间戳未完全对齐时，这个计算单元可以用来对齐数据包。它有两个数据输入和一个触发输入，当触发输入有值是将最后的两个输入数据输出我数据流供后续计算单元使用，这样就达到了同步。下面是它的完整代码：
+
+```
+#include <vector>
+#include "absl/strings/str_cat.h"
+#include "mediapipe/framework/calculator_framework.h"
+
+namespace mediapipe {
+
+class PacketClonerCalculator : public CalculatorBase {
+ public:
+  static ::mediapipe::Status GetContract(CalculatorContract* cc) {
+    const int tick_signal_index = cc->Inputs().NumEntries() - 1;
+    // cc->Inputs().NumEntries() returns the number of input streams
+    // for the PacketClonerCalculator
+    for (int i = 0; i < tick_signal_index; ++i) {
+      cc->Inputs().Index(i).SetAny();
+      // cc->Inputs().Index(i) returns the input stream pointer by index
+      cc->Outputs().Index(i).SetSameAs(&cc->Inputs().Index(i));
+    }
+    cc->Inputs().Index(tick_signal_index).SetAny();
+    return ::mediapipe::OkStatus();
+  }
+
+  ::mediapipe::Status Open(CalculatorContext* cc) final {
+    tick_signal_index_ = cc->Inputs().NumEntries() - 1;
+    current_.resize(tick_signal_index_);
+    // Pass along the header for each stream if present.
+    for (int i = 0; i < tick_signal_index_; ++i) {
+      if (!cc->Inputs().Index(i).Header().IsEmpty()) {
+        cc->Outputs().Index(i).SetHeader(cc->Inputs().Index(i).Header());
+        // Sets the output stream of index i header to be the same as
+        // the header for the input stream of index i
+      }
+    }
+    return ::mediapipe::OkStatus();
+  }
+
+  ::mediapipe::Status Process(CalculatorContext* cc) final {
+    // Store input signals.
+    for (int i = 0; i < tick_signal_index_; ++i) {
+      if (!cc->Inputs().Index(i).Value().IsEmpty()) {
+        current_[i] = cc->Inputs().Index(i).Value();
+      }
+    }
+
+    // Output if the tick signal is non-empty.
+    if (!cc->Inputs().Index(tick_signal_index_).Value().IsEmpty()) {
+      for (int i = 0; i < tick_signal_index_; ++i) {
+        if (!current_[i].IsEmpty()) {
+          cc->Outputs().Index(i).AddPacket(
+              current_[i].At(cc->InputTimestamp()));
+          // Add a packet to output stream of index i a packet from inputstream i
+          // with timestamp common to all present inputs
+        } else {
+          cc->Outputs().Index(i).SetNextTimestampBound(
+              cc->InputTimestamp().NextAllowedInStream());
+          // if current_[i], 1 packet buffer for input stream i is empty, we will set
+          // next allowed timestamp for input stream i to be current timestamp + 1
+        }
+      }
+    }
+    return ::mediapipe::OkStatus();
+  }
+
+ private:
+  std::vector<Packet> current_;
+  int tick_signal_index_;
+};
+
+REGISTER_CALCULATOR(PacketClonerCalculator);
+} 
+```
++ GetContract - 定义输入和输出数据的类型
++ Open - 初始化变量
++ Process - 先储存输入数据再判断是否有触发数据，有的话就输出数据，没有就允许接受下个输入数据。
+
+这个计算单元只是起到了数据帧同步的问题，它把同步的数据再给下个负责数据推理的计算单元处理，这个的话通过这个图就可以构建一个处理清晰的应用来。
 
 ## 可视化图编辑器
 
@@ -80,6 +168,7 @@ node {
 ```
 
 ![Object detection](MP_images/graph3.png)
+
 
 
 ## 目前开源基于MediaPipe实现的实例

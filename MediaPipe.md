@@ -47,8 +47,7 @@ MediaPipe的核心框架由C++实现，并提供Java以及Objective C等语言�
 + 子图(Subgraph) - 另外一个完整的图作为节点。
 + 数据流(Stream) - 是由按时间顺序升序排列的多个数据包组成，一个数据流的某一特定时间戳只允许至多一个数据包的存在，如采集的视频帧可以看做一个数据流。
 + 图(Graph) - 是有向的图，数据包从数据源(Graph Input Stream)流入图直至在输出结点(Graph Output Stream)离开。
-
-![Object detection](MP_images/graph2.png)
++ 图配置(GraphConfig) - 是描述图的拓扑和功能的配置文件。 
 
 MediaPipe开源了多个由谷歌内部团队实现的计算单元的同时，也向用户提供定制新计算单元的接口。创建一个新的计算单元，需要用户继承CalculatorBase类并实现Open，Process，Close方法去分别定义计算单元的初始化方法，数据流的处理方法，以及在计算单元完成所有运算后的关闭步骤。为了方便用户在多个图中复用已有的通用组件，例如图像数据的预处理、模型的推理以及图像的渲染等，MediaPipe引入了子图(Subgraph)的概念。因此，一个MediaPipe图中的节点既可以是计算单元，亦可以是子图。子图在不同图内的复用，方便了大规模模块化的应用搭建。
 
@@ -61,7 +60,7 @@ MediaPipe提供了[MediaPipe Visualizer](https://viz.mediapipe.dev/)在线工具
 
 ![Object detection](MP_images/graph2.png)
 
-可以看到图显示在左边区域它是一个只读区域，通过鼠标可以缩放并拖动图像但不能编辑。右边是文本编辑区可以添加或编辑代码来修改图，这里的代码是GraphConfig代码。下面的代码是我们有添加一个Video Flip的计算单元。更新后的图如下所示
+可以看到图显示在左边区域它是一个只读区域，通过鼠标可以缩放并拖动图像但不能编辑。右边是文本编辑区可以添加或编辑代码来修改图，这里的代码就是GraphConfig，它可以被保存为一个文本文件然后通过Graph的API来加载这个图。下面的代码是我们又添加一个Video Flip的计算单元。更新后的图如下所示：
 
 ```
 input_stream: "input"

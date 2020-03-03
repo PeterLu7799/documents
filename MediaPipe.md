@@ -61,13 +61,13 @@ MediaPipe的核心框架由C++实现，并提供Java以及Objective C等语言�
 
 计算单元是一个C++类，创建一个计算单元需要用户继承于CalculatorBase类并实现GetContract, Open, Process, Close方法去分别定义计算单元的初始化，数据流的处理，以及在计算单元完成所有运算后的关闭步骤。
 
-假设我们有一个场景，里面有摄像机，麦克风和光传感器用于采集数据并处理。 每个传感器都独立运行，并间按照自己的采样率采集数据，由于各个传感器的采样率不同它们收集并发送数据不是同步的。假如每个传感器的输出为：
+假设我们有一个场景，里面有摄像机，麦克风和光传感器用于采集数据并处理。 每个传感器都独立运行，并且按照各自的采样率采集数据，由于各个传感器的采样率不同它们收集并发送数据就不会同步。假如每个传感器的采集输出为：
 
 + 摄像机 - 房间的RGB图像帧（ImageFrame）
 + 麦克风 - 房间中声音的分贝（整数）
 + 光线传感器 - 房间的亮度（整数）
 
-我们的应用要处理来自这3个传感器的数据，当然不是每个传感器有数据就处理，我们要在摄像机的图像帧数据到来时与最后一次收集的麦克风数据和光传感器数据作为一帧数据一起进行处理。这里我们就需要一个计算单元来完成这个同步工作。在MediaPipe中提供了PacketClonerCalculator计算单元，它在条件满足时把之前输入数据的克隆体作为一帧输出给下个节点使用，所以当到达的数据包的时间戳未完全对齐时，这个计算单元可以用来对齐数据包。它有三个输入，两个数据输入和一个触发输入，当触发输入有值是将最后的两个数据输入的数据输出给后续节点使用，这样就达到了同步保证了后续节点的数据是完整的。下面是它的完整代码：
+我们的应用要处理来自这3个传感器的数据，当然不是每个传感器有数据就处理，我们要在摄像机的图像帧数据到来时与最后一次收集的麦克风数据和光传感器数据作为一帧数据一起进行处理。这里我们就需要一个计算单元来完成这个同步工作。在MediaPipe中提供了PacketClonerCalculator计算单元，它在条件满足时把存储的最后一帧数据的克隆体作为一帧输出给下个节点，所以当到达的数据包的时间戳未完全对齐时，这个计算单元可以用来对齐数据包。它有三个输入，两个数据输入和一个触发输入，当触发输入有值是将最后的两个数据输出给后续节点使用，这样就达到了同步保证了后续节点的数据是完整的。下面是它的完整代码：
 
 ```
 #include <vector>
@@ -141,19 +141,19 @@ REGISTER_CALCULATOR(PacketClonerCalculator);
 } 
 ```
 
-+ GetContract - 定义输入和输出数据的类型
-+ Open - 初始化变量
-+ Process - 先储存输入数据再判断是否有触发数据，有的话就输出数据，没有就允许接受下个输入数据。
-
-这个计算单元只是起到了数据帧同步的问题，它把同步的数据再给下个负责数据推理的计算单元处理，这个的话通过这个图就可以构建一个处理清晰的应用来。
++ GetContract() - 定义输入和输出数据的类型
++ Open() - 初始化变量
++ Process() - 先储存输入数据再判断是否有触发数据，有的话就输出数据，没有就允许接受下个输入数据。
++ REGISTER_CALCULATOR - 是在MediaPipe中注册这个计算单元
++ CalculatorContext - 由MediaPipe graph提供里面存储输入和输出数据信息
 
 ### 可视化图编辑器
 
-MediaPipe提供了[MediaPipe Visualizer](https://viz.mediapipe.dev/)在线工具，它帮助用户了解其计算单元图形的结构并了解其机器学习推理管道的整体行为。图形视图允许用户在编辑器中直接修改或上传图形配置文件加载到编辑器，有一个视频剪切计算单元的图如下所示：
+MediaPipe提供了[MediaPipe Visualizer](https://viz.mediapipe.dev/)在线工具，它帮助开发者了解其计算单元图的结构并了解其机器学习推理管道的整体行为。这个图预览工具允许用户在编辑器中直接输入或上传图形配置文件来加载。如一个只有视频剪切计算单元的图如下所示：
 
 ![Object detection](MP_images/graph2.png)
 
-可以看到图显示在左边区域它是一个只读区域，通过鼠标可以缩放并拖动图像但不能编辑。右边是文本编辑区可以添加或编辑代码来修改图，这里的代码就是GraphConfig，它可以被保存为一个文本文件然后通过Graph的API来加载这个图。下面的代码是我们又添加一个Video Flip的计算单元。更新后的图如下所示：
+可以看到图显示在左边区域它是一个只读区域，通过鼠标可以缩放并拖动图像但不能编辑。右边是文本编辑区可以添加或编辑代码来修改图，这里的代码就是GraphConfig，它可以被保存为一个文本文件然后通过Graph的API来加载这个图。下面的代码是我们又添加一个视频反转(Video Flip)的计算单元。更新后的图如下所示：
 
 ```
 input_stream: "input"
@@ -174,38 +174,53 @@ node {
 
 ![Object detection](MP_images/graph3.png)
 
+图配置的语法简单说明如下：
+
++ input_stream - 输入流名字
++ output_stream - 输出流名字
++ node - 定义节点
+	+ calculator - 节点的计算单元类名
+	+ input_stream - 节点的输入流名字
+	+ output_stream - 节点的输出流名字
+
+可以看到VideoClipCalculator节点使用input作为输入，然后输出clippedVideoOutput，VideoFlipCalculator节点使用clippedVideoOutput作为输入，最后输出output。另外图配置还有另外一些参数配置和命名规则这里就不再说了。
+
 ## 目前基于MediaPipe实现的实例
 
-下面这些都是利用MediaPipe框架实现的应用，处理最后一个其余都是可以跨平台运行的。
+下面这些都是Google利用MediaPipe框架实现的移动端应用实例，当然整个基于MediaPipe的开源项目还有桌面应用，浏览器应用和Google Coral应用。
 
-+ 人脸侦测(Face Detection)
-+ 多手追踪(Multi-hand Tracking)
++ 物体检测(Object Detection)
++ 物体检测并追踪(Object Detection and Tracking)
++ 人脸检测(Face Detection)
++ 单手检测(Hand Detection)
 + 单手追踪(Hand Tracking)
++ 多手追踪(Multi-hand Tracking)
 + 头发分割(Hair Segmentation）
-+ 物体识别(Object Detection)
-+ 物体识别并追踪(Object Detection and Tracking)
-+ 自动视频裁剪(AutoFlip)
 
-## 物体识别
+### 物体检测(Object Detection)的图
 
-这里主要说一下物体识别是怎么用MediaPipe实现的。下图是物体识别的MeidaPipe图：
+下图就是物体检测的MeidaPipe图，可以看出从上面的视频输入到下面的视频输出这个过程还是有不少计算单元的，其中仅TfLiteInference计算单元完成物体的推理。
 
 ![Object detection](MP_images/graph4.png)
 
-我们从输入到输出说明一下每个计算单元都是干什么的。
+我们从上而下说明一下每个计算单元都是干什么的。
 
 + input_video - 输入视频
-+ FlowLimiter - 帧限流计算单元，它会接受下面计算单元的一个输入表示可以处理下一帧了，要不会丢去当前的视频帧。这样就可以控制处理不会因为处理的慢而造成问题。
++ FlowLimiter - 帧限流计算单元，它会接收下面计算单元的一个输入信号，如黄色虚线所示，如果没有下面单元的输入信号它会丢弃当前的视频帧，这样就可以控制处理过程不会因为输人间隔小于处理时间而出现问题了。
 + TFLiteConverter - 将输入图片转化成TFLite模型可处理的张量
 + TFLiteInference - 模型推理
++ SsdAnchors - 生成用于解码模型的Anchors
 + TFLiteTensorsToDetections - 将模型的输出转化成侦测结果
-+ NoMaxSuppression - No Max Suppression算法处理
++ NoMaxSuppression - non-maximum suppression算法为了去除重复的物体
 + DetectionLabelIdToText - 将检测结果转化成对应的物体名称
 + DetectionsToRenderData - 将检测的结果的数据转化成渲染数据
-+ AnnotationOverlay - 标注数据叠加到当前视频帧
++ AnnotationOverlay - 标注数据叠加到当前视频帧，它需要从FlowLimiter的原始视频帧
 + Output_video - 最终输出的视频帧
 
-
 ## 总结
+
+MediaPipe里还有边数据包(Side packets), 输入策略(Input policies)，运行时行为(Runtime behavior)等概念就不再说明了。可以说是MediaPipe是一个利用“有序管线”图的应用程序开发框架，甚至可以基于它开发一个完全没有机器学习推理的应用程序，但是由于它基于图的这样一个架构使其很适合开发含有推理模型的应用。
+
+Bazel构建工具是构建MediaPipe和测试工具，MediaPipe框架及里面的所有示例包括iOS端的都是用这个工具构建的，所有要会使用这个跨平台构建工具。
 
 

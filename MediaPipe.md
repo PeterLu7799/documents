@@ -222,5 +222,3 @@ node {
 MediaPipe里还有边数据包(Side packets), 输入策略(Input policies)，运行时行为(Runtime behavior)等概念就不再说明了。可以说是MediaPipe是一个利用“有序管线”图的应用程序开发框架，甚至可以基于它开发一个完全没有机器学习推理的应用程序，但是由于它基于图的这样一个架构使其很适合开发含有推理模型的应用。
 
 Bazel构建工具是构建MediaPipe和测试工具，MediaPipe框架及里面的所有示例包括iOS端的都是用这个工具构建的，所有要会使用这个跨平台构建工具。
-
-

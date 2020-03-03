@@ -27,7 +27,7 @@ MediaPipe通过将各个感知模型抽象为模块并将其连接到可维护�
 
 从图中各个模块的名字可以看出它们的功能，输入是摄像头采集的视频数据帧通过图中各个模块的处理输出到显示屏上。下图是手机运行效果：
 
-![Object detection](MP_images/graph_anim.gif)
+![Object detection demo](MP_images/graph_anim.gif)
 
 在TensorFlow，PyTorch，CNTK或MXNet等项目中使用操作图来定义神经网络模型。但MediaPipe的图起到了补充作用，MediaPipe未定义神经网络的内部结构，而是指定了嵌入一个或多个模型的较大规模的管道。
 

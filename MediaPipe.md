@@ -25,11 +25,11 @@ MediaPipe通过将各个感知模型抽象为模块并将其连接到可维护�
 
 下图是基于MediaPipe构建的的目标检测图：
 
-![Object detection](MP_images/graph.png)
+![Object detection](http://p4.qhimg.com/t01b5e859a0f4b127ee.png)
 
 从图中各个模块的名字可以看出个模块的功能，输入是摄像头采集的视频数据帧通过图中各个模块的处理输出到显示屏上。下图是手机运行效果：
 
-![Object detection demo](MP_images/graph_anim.gif)
+![Object detection demo](http://p4.qhimg.com/t01094d1faf66c028c0.gif)
 
 ## MediaPipe介绍
 
@@ -73,7 +73,7 @@ MediaPipe已经包含了多个由Google实现的计算单元，也向用户提�
 
 我们的应用要处理来自这3个传感器的数据，当然不是每个传感器有数据到来就处理，我们要在摄像机的图像帧数据到来时与最后一次收集的麦克风数据和光传感器数据作为一帧数据一起进行处理。这里我们就需要一个计算单元来完成这个同步工作。在MediaPipe中提供了PacketClonerCalculator计算单元，它在条件满足时把存储的最后一帧数据的克隆体作为一帧输出给下个节点，所以当到达的数据包的时间戳未完全对齐时，这个计算单元可以用来对齐数据包。如下图所示，它有三个输入，数据输入0，数据输入1和一个触发输入(tick)，当触发输入有值是将最后的两个数据输出到输出端口0和输出端口1，这样就达到了数据同步保证了后续节点的数据是完整的。
 
-![PacketClonerCalculator](MP_images/graph5.png)
+![PacketClonerCalculator](http://p9.qhimg.com/t019af647f11669a944.png)
 
 PacketClonerCalculator的完整代码：
 
@@ -160,7 +160,7 @@ REGISTER_CALCULATOR(PacketClonerCalculator);
 
 MediaPipe提供了[MediaPipe Visualizer](https://viz.mediapipe.dev/)在线工具，它帮助开发者了解其计算单元图的结构并了解其机器学习推理管道的整体行为。这个图预览工具允许用户在编辑器中直接输入或上传图形配置文件来加载。一个只有视频剪切计算单元的图如下所示：
 
-![Object detection](MP_images/graph2.png)
+![Object detection](http://p9.qhimg.com/t017622304672d3c8d1.png)
 
 可以看到图显示在左边区域它是一个只读区域，通过鼠标可以缩放并拖动图但不能编辑。右边是文本编辑区可以添加或编辑图描述代码来修改图，这里的代码就是GraphConfig，它可以被保存为一个文本文件然后通过Graph的API来加载这个图。下面的代码是我们又添加一个视频反转(Video Flip)的计算单元。更新后的图如下所示：
 
@@ -181,7 +181,7 @@ node {
 }
 ```
 
-![Object detection](MP_images/graph3.png)
+![Object detection](http://p8.qhimg.com/t01020f4799400537b9.png)
 
 图配置代码简单说明如下：
 
@@ -210,7 +210,7 @@ node {
 
 下图就是物体检测的MeidaPipe图，可以看出从上面的视频输入到下面的视频输出整个过程还是有不少计算单元的，其中仅TfLiteInference计算单元基于TensorFlow Lite完成推理。
 
-![Object detection](MP_images/graph4.png)
+![Object detection](http://p0.qhimg.com/t01cf1cb42203f3a0d5.png)
 
 我们从上而下说明一下每个计算单元的作用：
 

@@ -24,6 +24,7 @@
 2. Removed My MV Video and Anchor related options in Mine page
 3. Removed the Go Live guide
 4. Removed the 5 options in Settings page
+5. Replaced the app icon
 
 ## Replacements of QiHu SDKs
 

@@ -118,4 +118,3 @@ econ_charge_view_config_superfast | “用花椒币购买”按钮显示云控 1
 bangdan_showing_config_superfast | 云控什么榜单显示
 double_type_money_switch_superfast | 双币功能开启 取值范围，0：不开启；1：开启
 rate_appstore_superfast | 去App Store评分开关。默认为0，开为1；
-flutter_switch_config | Flutter灰度云控

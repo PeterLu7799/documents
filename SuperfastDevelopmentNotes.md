@@ -18,13 +18,15 @@
 5. Changed the Info plist file
 6. Added the two extensions to livingSuperfast target 
 
-## Requirments on the superfast view
+## Code changes
 
 1. Removed the Live button in the tabbar
 2. Removed My MV Video and Anchor related options in Mine page
 3. Removed the Go Live guide
 4. Removed the 5 options in Settings page
 5. Replaced the app icon
+6. Added APPNAME=huajiao_lite as common paramenter in service call
+7. Changed the push devicetoken to report at "lite_pushid"
 
 ## Replacements of QiHu SDKs
 

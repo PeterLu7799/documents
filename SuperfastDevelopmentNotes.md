@@ -27,6 +27,9 @@
 5. Replaced the app icon
 6. Added APPNAME=huajiao_lite as common paramenter in service call
 7. Changed the push devicetoken to report at "lite_pushid"
+8. 3D Touch for going living is removed
+9. Go Living from URL scheme is blocked and now showing an alertview
+
 
 ## Replacements of QiHu SDKs
 

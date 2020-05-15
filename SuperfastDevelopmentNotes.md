@@ -29,6 +29,12 @@
 7. Changed the push devicetoken to report at "lite_pushid"
 8. 3D Touch for going living is removed
 9. Go Living from URL scheme is blocked and now showing an alertview
+10. Web view's User Agent append string “huajiao_lite”
+11. Changed Group IDs 
+12. Changed Universal Link
+13. Added common post parameter "open_appkey" for economic service calls
+14. Aded "huajiao_lite" in User Agent
+15. Changed Alipay app scheme
 
 
 ## Replacements of QiHu SDKs
@@ -49,16 +55,22 @@
 
 ### YSVideoSDK
 1. Build new target YSVideoSuperfastSDK
-2. Replaced the QiHu SDK
+2. Added SUPERFAST_VERSION macro
+3. Replaced the QiHu SDK
 
 ## Shrink package
 
 ### Code removal
 
-1. Removed Go Live code files and all its Category files
+1. Removed Go Live code files
 
-	* HJSeedingViewController_v2
-
+	* HJSeedingViewController_v2 and all its categories
+	* HJSeedEndView
+	* HJSeedEndAchievementView
+	* HJSeedEndHeadView
+	* HJSeedEndImagesView
+	* HJSeedEndBaseView
+	
 2. Removed My MV files:
 
 	* HJMYMVViewController
@@ -74,8 +86,10 @@
 1. Weixin appid and AppSecret 
 2. QQ appid
 3. Weibo appid
-2. QDas appkey
-3. QMapLocationGeocoder appkey
+4. QDas appkey
+5. QMapLocationGeocoder appkey
+6. PEPLocationAndGeoManager
+7. JVAuthConfig
 
 ## In-app Purchase Products
 
@@ -116,7 +130,6 @@ live_seed_switch_superfast | 直播资源只获取图片
 banner_switch_superfast | 云控关闭广场banner
 login_qq_superfast | qq登录开关，默认关闭
 econ_luckymoney_switch_superfast | 红包开关 默认0， 1打开
-my_parise_switch_superfast | 我的奖金
 econ_charge_view_config_superfast | “用花椒币购买”按钮显示云控 1显示. 购买提示
 bangdan_showing_config_superfast | 云控什么榜单显示
 double_type_money_switch_superfast | 双币功能开启 取值范围，0：不开启；1：开启

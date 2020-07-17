@@ -40,7 +40,14 @@ A: Image pyramid is created by scaling the original image to get multiple scaled
 1. Region Proposal Network - replace selective search with a very small convolutional network.
 2. Anchor boxes introduced 
 
-### 
+### Regression-based 
+
+#### YOLO (You Only Look Once)
+
+1. Divides each image into a grid of SxS 
+2. Each grid predicts N bounding boxes and confidence
+
+#### Single Shot Detector (SSD)
 
 
 ## Reference

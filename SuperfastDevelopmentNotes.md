@@ -7,7 +7,8 @@
 3. Changed bundle id to be "com.huajiao.lite"
 4. Changed Podfile to add the support for new target
 5. Removed the three extensions
-6. Build and run successfully
+6. Add SUPERFAST_VERSION in Preprocessor Macros of Build Settings
+
 
 ## Added two new notification targes
 
@@ -18,7 +19,7 @@
 5. Changed the Info plist file
 6. Added the two extensions to livingSuperfast target 
 
-## Code changes
+## Code changes via SUPERFAST_VERSION macro
 
 1. Removed the Live button in the tabbar
 2. Removed My MV Video and Anchor related options in Mine page
@@ -27,7 +28,7 @@
 5. Replaced the app icon
 6. Added APPNAME=huajiao_lite as common paramenter in service call
 7. Changed the push devicetoken to report at "lite_pushid"
-8. 3D Touch for going living is removed
+8. 3D Touch for Go Living is removed
 9. Go Living from URL scheme is blocked and now showing an alertview
 10. Web view's User Agent append string “huajiao_lite”
 11. Changed Group IDs 
@@ -46,17 +47,6 @@
 * libQHMakeup.a (微整形) (Warting for the lib)
 * AIGreenScreen.framework (绿幕) (Done)
 
-## Duplication of the sub-projects
-
-### QHIVideoSDK
-1. Build new target QHIVideoSDKSuperfast
-2. Replaced the QiHu face and makeup SDK
-	
-
-### YSVideoSDK
-1. Build new target YSVideoSuperfastSDK
-2. Added SUPERFAST_VERSION macro
-3. Replaced the QiHu SDK
 
 ## Shrink package
 
@@ -121,7 +111,7 @@ Name | Type | ID
 骑士贵族特权续费(非自动续费型订阅) 	 | Non-Renewing Subscription | noble.50.ios.lite.huajiao.com
 
 
-## Remote controlling Keys
+## Controlling Keys
 
 Key | comment
 ---- | ----

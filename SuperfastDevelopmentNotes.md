@@ -40,12 +40,12 @@
 
 ## Replacements of QiHu SDKs
 
-* QIHUAI.framework (fabby，魔法背景) (Done)
-* libqhface.a (face recognition) (Done)
-* Gesture.framework (魔法手势) (Done)
-* AIMakeUp360.framework (基础和高级美颜) (Done)
-* libQHMakeup.a (微整形) (Warting for the lib)
-* AIGreenScreen.framework (绿幕) (Done)
+* QIHUAI.framework (fabby，魔法背景) 
+* libqhface.a (face recognition) 
+* Gesture.framework (魔法手势) 
+* AIMakeUp360.framework (基础和高级美颜) 
+* libQHMakeup.a (微整形) 
+* AIGreenScreen.framework (绿幕) 
 
 
 ## Shrink package
@@ -80,13 +80,20 @@
 5. QMapLocationGeocoder appkey
 6. PEPLocationAndGeoManager
 7. JVAuthConfig
+8. QHGroupUI.framework Push Appkey
+	* #define QHP_HJ_AppKey      @"aeu43brc02yh"
+
 
 ## In-app Purchase Products
 
 Name | Type | ID
 ---- | ---- | ----
 1元包 | Consumable | fastpay.1.ios.lite.huajiao.com
+3元包 | Consumable | fastpay.3.ios.lite.huajiao.com
 6元包 | Consumable | fastpay.6.ios.lite.huajiao.com
+18元包  |  Consumable  |  fastpay.18.ios.lite.huajiao.com
+30元包  |  Consumable  |  fastpay.30.ios.lite.huajiao.com
+60元包  |  Consumable  |  fastpay.60.ios.lite.huajiao.com
 42花椒豆 | Consumable | 6.ios.lite.huajiao.com
 210花椒豆 | Consumable | 30.ios.lite.huajiao.com
 686花椒豆 | Consumable | 98.ios.lite.huajiao.com

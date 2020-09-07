@@ -138,7 +138,7 @@ Some outstanding features:
 * Image Registration
 * Hand Pose (iOS 14)
 
-![](images/hand_landmarks.png)
+<img src="./images/hand_landmarks.png" width = "600" align=center />
 
 * Body Pose (iOS 14)
 

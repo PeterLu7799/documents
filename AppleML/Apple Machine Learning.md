@@ -39,8 +39,9 @@
 
 * Core ML Models
 * Create ML
-* Core ML Tools
 * Turi Create
+* Core ML Tools
+* Metal Performance Shaders (MPS)
 
 #### Core ML Models
 
@@ -131,6 +132,12 @@ Use the coremltools Python package to convert models from third-party training l
 
 <img src="./Images/coremltools.png" width = "600" align=center />
 
+#### Metal Performance Shaders (MPS)
+
+* MPS Graph (iOS 14)[WWDC2020](https://developer.apple.com/videos/play/wwdc2020/10677/)
+
+
+
 ## Vision
 
 Some outstanding features:
@@ -162,6 +169,15 @@ Analyze the movement bwtween two frames, and tell how each pixel flow in X and Y
 
 
 ## Natural Language
+
+The Natural Language framework provides a variety of natural language processing (NLP) functionality with support for many different languages and scripts. 
+
+* Language identification, automatically detecting the language of a piece of text.
+* Tokenization, breaking up a piece of text into linguistic units or tokens.
+* Parts-of-speech tagging, marking up individual words with their part of speech.
+* Lemmatization, deducing a word's stem based on its morphological analysis.
+* Named entity recognition, identifying tokens as names of people, places, or organizations.
+
 
 ## Speech
 

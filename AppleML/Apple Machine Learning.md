@@ -142,15 +142,15 @@ Some outstanding features:
 
 * Body Pose (iOS 14)
 
-![](images/VisionPoseJoints.png)
+<img src="./images/VisionPoseJoints.png" width = "600" align=center />
 
 * Trajectory detection (iOS 14)
 
-![](images/trajectoryDetect.png)
+<img src="./images/trajectoryDetect.png" width = "500" align=center />
 
 * Contour detection (iOS 14)
 
-![](images/contour.png)
+<img src="./images/contour.png" width = "300" align=center />
 
 * Optical Flow (iOS 14)
 
@@ -162,18 +162,17 @@ Some outstanding features:
 ## Sound
 
 ## Core Image
-### Scaling
-### Morphology Operations
+* Scaling
+* Morphology Operations
 
 To make small features in your image more prominent
 
-### Noise Reduction
-### Edge Detection
-### Contrast enhance
-### Binarization
-### Comparing images
-### Re-generating barcodes
-
+* Noise Reduction
+* Edge Detection
+* Contrast enhance
+* Binarization
+* Comparing images
+* Re-generating barcodes
 
 ## Alternatives
 

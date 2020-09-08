@@ -14,7 +14,8 @@
 
 ## Computer Vision
 
-![Models](images/Models_so_far.png)
+<img src="./Images/Models_so_far.png" width = "600" align=center />
+
 
 ## Core ML
 

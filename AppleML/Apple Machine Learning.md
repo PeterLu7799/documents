@@ -128,11 +128,8 @@ Apple provides a open source toolkits for creating Core ML models via Python.
 Use the coremltools Python package to convert models from third-party training libraries such as TensorFlow and PyTorch to the Core ML format.
 
 * [github](https://github.com/apple/coremltools)
-* 
 
 <img src="./Images/coremltools.png" width = "600" align=center />
-
-
 
 ## Vision
 

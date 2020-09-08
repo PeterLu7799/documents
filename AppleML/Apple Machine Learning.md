@@ -172,11 +172,19 @@ Analyze the movement bwtween two frames, and tell how each pixel flow in X and Y
 
 The Natural Language framework provides a variety of natural language processing (NLP) functionality with support for many different languages and scripts. 
 
-* Language identification, automatically detecting the language of a piece of text.
-* Tokenization, breaking up a piece of text into linguistic units or tokens.
-* Parts-of-speech tagging, marking up individual words with their part of speech.
-* Lemmatization, deducing a word's stem based on its morphological analysis.
-* Named entity recognition, identifying tokens as names of people, places, or organizations.
+* [Tokenization](https://developer.apple.com/documentation/naturallanguage/tokenizing_natural_language_text)
+	* Breaking up a piece of text into linguistic units or tokens such as words, sentences and paragraphs.
+* [Language Identification](https://developer.apple.com/documentation/naturallanguage/identifying_the_language_in_text)
+	* Automatically detecting the language of a piece of text.
+* Linguistic Tags
+	* [Identifying Parts of Speech,](https://developer.apple.com/documentation/naturallanguage/identifying_parts_of_speech) classify nouns, verbs, adjectives, and other parts of speech in a string.
+	* [Named entity recognition](https://developer.apple.com/documentation/naturallanguage/identifying_people_places_and_organizations), identifying tokens as names of people, places, or organizations.
+* Text Embedding
+	* [Finding Similarities Between Pieces of Text.](https://developer.apple.com/documentation/naturallanguage/finding_similarities_between_pieces_of_text)
+* Natural Language Models by Create ML
+	* Custom word tagging
+	* Custom text classification
+
 
 
 ## Speech

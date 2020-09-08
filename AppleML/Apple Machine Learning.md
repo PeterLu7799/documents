@@ -74,22 +74,17 @@ Create machine learning models for use in your app.
 	* Image classification
 	* Object detection
 	* Style transfer
-
 * Video
 	* Action classification [WWDC video](https://developer.apple.com/videos/play/wwdc2020/10043/)
 		it is also a classification task and powered by body pose estimation and Human body actions
 	* Style transfer 
-
 * Motion
 	* Activity classification
-
 * Sound
 	* Sound classfication
-
 * Text
 	* Text classification
 	* Word tagging
-
 * Tabular
 	* Tabular classification
 	* Tabular regression
@@ -135,7 +130,6 @@ Use the coremltools Python package to convert models from third-party training l
 #### Metal Performance Shaders (MPS)
 
 * MPS Graph (iOS 14)[WWDC2020](https://developer.apple.com/videos/play/wwdc2020/10677/)
-
 
 
 ## Vision
@@ -185,11 +179,20 @@ The Natural Language framework provides a variety of natural language processing
 	* Custom word tagging
 	* Custom text classification
 
-
-
 ## Speech
 
+* Speech Recognition
+
+Perform speech recognition on live or prerecorded audio. Always assume that performing speech recognition requires a network connection.
+
+* Supported languages
+
+<img src="./Images/SpeechRecognition.png" width = "300" align=center />
+
 ## Sound
+
+Analyze streamed and file-based audio to classify it as a particular type.
+
 
 ## Core Image
 * Scaling

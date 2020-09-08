@@ -125,9 +125,14 @@ Apple provides a open source toolkits for creating Core ML models via Python.
 
 #### Core ML Tools
 
+Use the coremltools Python package to convert models from third-party training libraries such as TensorFlow and PyTorch to the Core ML format.
+
+* [github](https://github.com/apple/coremltools)
+* 
+
 <img src="./Images/coremltools.png" width = "600" align=center />
 
-[github](https://github.com/apple/coremltools)
+
 
 ## Vision
 
@@ -153,6 +158,10 @@ Some outstanding features:
 <img src="./Images/contour.png" width = "300" align=center />
 
 * Optical Flow (iOS 14)
+
+Analyze the movement bwtween two frames, and tell how each pixel flow in X and Y
+
+<img src="./Images/OpticalFlow.png" width = "300" align=center />
 
 
 ## Natural Language

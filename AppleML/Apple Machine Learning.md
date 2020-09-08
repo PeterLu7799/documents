@@ -141,9 +141,24 @@ Use the coremltools Python package to convert models from third-party training l
 
 Some outstanding features:
 
-* Face detection
-* Face landmark
-* Image Registration
+* Still Image Analysis
+	* [Detecting Objects in Still Images](https://developer.apple.com/documentation/vision/detecting_objects_in_still_images?language=objc)
+* Image Sequence Analysis
+	* VNSequenceRequestHandler 
+* Saliency Analysis
+	* [Cropping Images Using Saliency](https://developer.apple.com/documentation/vision/cropping_images_using_saliency?language=objc)
+* Object Tracking
+	* [Tracking the User’s Face in Real Time](https://developer.apple.com/documentation/vision/tracking_the_user_s_face_in_real_time?language=objc)
+	* [Tracking Multiple Objects or Rectangles in Video](https://developer.apple.com/documentation/vision/tracking_multiple_objects_or_rectangles_in_video?language=objc)
+* Rectangle Detection
+* Face and Body Detection	
+* Animal Detection
+* Barcode Detection
+* Text Detection
+* Text Recognition
+* Horizon Detection
+* Image Alignment
+* Object Recognition
 * Hand Pose (iOS 14)
 
 <img src="./Images/hand_landmarks.png" width = "600" align=center />

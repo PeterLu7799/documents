@@ -187,7 +187,7 @@ Perform speech recognition on live or prerecorded audio. Always assume that perf
 
 * Supported languages
 
-<img src="./Images/SpeechRecognition.png" width = "300" align=center />
+<img src="./Images/SpeechRecognition.png" height = "300" align=center />
 
 ## Sound
 

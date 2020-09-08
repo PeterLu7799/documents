@@ -16,7 +16,6 @@
 
 <img src="./Images/Models_so_far.png" width = "600" align=center />
 
-
 ## Core ML
 
 ### What does Core ML provide
@@ -30,7 +29,7 @@
 
 ### Architecture
 
-![](images/coreml_level.png)
+<img src="./Images/coreml_level.png" width = "600" align=center />
 
 * [BNNS](https://developer.apple.com/documentation/accelerate/bnns) is the subset of Accelerate framework, it provides a collection of functions that you use to construct neural networks for training and inference via CPU's vector processor
 
@@ -126,7 +125,7 @@ Apple provides a open source toolkits for creating Core ML models via Python.
 
 #### Core ML Tools
 
-![](images/coremltools.png)
+<img src="./Images/coremltools.png" width = "600" align=center />
 
 [github](https://github.com/apple/coremltools)
 
@@ -139,19 +138,19 @@ Some outstanding features:
 * Image Registration
 * Hand Pose (iOS 14)
 
-<img src="./images/hand_landmarks.png" width = "600" align=center />
+<img src="./Images/hand_landmarks.png" width = "600" align=center />
 
 * Body Pose (iOS 14)
 
-<img src="./images/VisionPoseJoints.png" width = "600" align=center />
+<img src="./Images/VisionPoseJoints.png" width = "600" align=center />
 
 * Trajectory detection (iOS 14)
 
-<img src="./images/trajectoryDetect.png" width = "500" align=center />
+<img src="./Images/trajectoryDetect.png" width = "500" align=center />
 
 * Contour detection (iOS 14)
 
-<img src="./images/contour.png" width = "300" align=center />
+<img src="./Images/contour.png" width = "300" align=center />
 
 * Optical Flow (iOS 14)
 

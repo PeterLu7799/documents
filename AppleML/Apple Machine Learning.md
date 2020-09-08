@@ -1,6 +1,6 @@
 # Apple's Machine Learning
 
-## Porpose
+## Purpose
 
 * The performance of the device has been enhanced.
 * iOS 14 added several new features
@@ -12,9 +12,15 @@
 * Introducing some core features
 
 
-## Computer Vision
+## Computer Vision frameworks
 
 <img src="./Images/Models_so_far.png" width = "600" align=center />
+
+## Natural Language Processing frameworks
+
+* Vision
+* Speech
+* SoundAnalysis
 
 ## Core ML
 
@@ -131,7 +137,6 @@ Use the coremltools Python package to convert models from third-party training l
 
 * MPS Graph (iOS 14)[WWDC2020](https://developer.apple.com/videos/play/wwdc2020/10677/)
 
-
 ## Vision
 
 Some outstanding features:
@@ -166,22 +171,22 @@ Analyze the movement bwtween two frames, and tell how each pixel flow in X and Y
 
 The Natural Language framework provides a variety of natural language processing (NLP) functionality with support for many different languages and scripts. 
 
-* [Tokenization](https://developer.apple.com/documentation/naturallanguage/tokenizing_natural_language_text)
+* [Tokenization](https://developer.apple.com/documentation/naturallanguage/tokenizing_natural_language_text) (iOS 12.0+)
 	* Breaking up a piece of text into linguistic units or tokens such as words, sentences and paragraphs.
-* [Language Identification](https://developer.apple.com/documentation/naturallanguage/identifying_the_language_in_text)
+* [Language Identification](https://developer.apple.com/documentation/naturallanguage/identifying_the_language_in_text) (iOS 12.0+)
 	* Automatically detecting the language of a piece of text.
-* Linguistic Tags
+* Linguistic Tags (iOS 12.0+)
 	* [Identifying Parts of Speech,](https://developer.apple.com/documentation/naturallanguage/identifying_parts_of_speech) classify nouns, verbs, adjectives, and other parts of speech in a string.
 	* [Named entity recognition](https://developer.apple.com/documentation/naturallanguage/identifying_people_places_and_organizations), identifying tokens as names of people, places, or organizations.
-* Text Embedding
+* Text Embedding (iOS 13.0+)
 	* [Finding Similarities Between Pieces of Text.](https://developer.apple.com/documentation/naturallanguage/finding_similarities_between_pieces_of_text)
-* Natural Language Models by Create ML
+* Natural Language Models by Create ML (iOS 12.0+)
 	* Custom word tagging
 	* Custom text classification
 
 ## Speech
 
-* Speech Recognition
+* Speech Recognition (iOS 10.0+)
 
 Perform speech recognition on live or prerecorded audio. Always assume that performing speech recognition requires a network connection.
 
@@ -191,7 +196,9 @@ Perform speech recognition on live or prerecorded audio. Always assume that perf
 
 ## Sound
 
-Analyze streamed and file-based audio to classify it as a particular type.
+* Sound classification (iOS 13.0+)
+
+Analyze streamed and file-based audio to classify it as a particular type. The framework performs its analysis using a Core ML model trained by an MLSoundClassifier
 
 
 ## Core Image

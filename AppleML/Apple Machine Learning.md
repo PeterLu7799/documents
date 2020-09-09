@@ -217,11 +217,9 @@ Analyze streamed and file-based audio to classify it as a particular type. The f
 
 
 ## Core Image
+
 * Scaling
 * Morphology Operations
-
-To make small features in your image more prominent
-
 * Noise Reduction
 * Edge Detection
 * Contrast enhance

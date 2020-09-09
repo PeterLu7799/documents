@@ -193,6 +193,28 @@ The Natural Language framework provides a variety of natural language processing
 	* Automatically detecting the language of a piece of text.
 * Linguistic Tags (iOS 12.0+)
 	* [Identifying Parts of Speech,](https://developer.apple.com/documentation/naturallanguage/identifying_parts_of_speech) classify nouns, verbs, adjectives, and other parts of speech in a string.
+
+		```swift
+		func retrievePOS(from text: String) -> [String] {
+	    let tagger = NLTagger(tagSchemes: [.lexicalClass])
+	    tagger.string = text
+	    
+	    var tags = [String]()
+	    let options: NLTagger.Options = [.omitPunctuation, .omitWhitespace]
+	    tagger.enumerateTags(in: text.startIndex..<text.endIndex, unit: .word, scheme: .lexicalClass, options: options) { (tag, tokenRange) -> Bool in
+	        if let tag = tag {
+	            tags.append(tag.rawValue)
+	        }
+	        return true
+	    }
+	    return tags
+		}
+		
+		let posTags = retrievePOS(from: "Loving someone is such a lovely feeling! I love it")
+		print(posTags)
+		
+		// output: ["Verb", "Noun", "Verb", "Adjective", "Determiner", "Adjective", "Noun", "Pronoun", "Verb", "Pronoun"]
+		```
 	* [Named entity recognition](https://developer.apple.com/documentation/naturallanguage/identifying_people_places_and_organizations), identifying tokens as names of people, places, or organizations.
 	* Lemmatization, the idea behind lemmatizing a word is turning both lover and loving into the same lemma: love.
 

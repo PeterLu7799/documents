@@ -108,7 +108,7 @@ Create machine learning models for use in your app.
 
 #### Turi Create
 
-Apple provides a open source toolkits for creating Core ML models via Python.
+Apple provides a open source toolkits for creating Core ML models via Python and it can take advantage of using the NVIDIA GPU.
 
 * [Documentation](https://apple.github.io/turicreate/docs/userguide/)
 * [Github](https://github.com/apple/turicreate#documentation)

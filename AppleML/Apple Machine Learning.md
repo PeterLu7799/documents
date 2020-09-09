@@ -242,6 +242,18 @@ The Natural Language framework provides a variety of natural language processing
 		// output: ["love", "someone", "be", "such", "a", "lovely", "feeling", "I", "love", "it"]
 		```
 * Text Embedding (iOS 13.0+)
+	* As an input for a Core ML model
+	* Make some features somewhat smarter
+
+		```swift
+		let embedding = NLEmbedding.wordEmbedding(for: .english)
+
+		let neighbors = embedding?.neighbors(for: embedding?.vector(for: "house") ?? [], maximumCount: 5) ?? []
+print(neighbors)
+
+		// output: [("building", 0.8805108666419983), ("mansion", 0.957676112651825), ("senate", 0.9628915190696716), ("brownstone", 0.982846200466156), ("bungalow", 0.9862753748893738)]
+
+		```
 	* [Finding Similarities Between Pieces of Text.](https://developer.apple.com/documentation/naturallanguage/finding_similarities_between_pieces_of_text)
 * Natural Language Models by Create ML (iOS 12.0+)
 	* Custom word tagging

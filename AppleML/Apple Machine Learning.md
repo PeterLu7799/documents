@@ -162,25 +162,25 @@ Some outstanding features:
 * Object Recognition
 * Hand Pose (iOS 14)
 
-<img src="./Images/hand_landmarks.png" width = "600" align=center />
+	<img src="./Images/hand_landmarks.png" width = "600" align=center />
 
 * Body Pose (iOS 14)
 
-<img src="./Images/VisionPoseJoints.png" width = "600" align=center />
+	<img src="./Images/VisionPoseJoints.png" width = "600" align=center />
 
 * Trajectory detection (iOS 14)
 
-<img src="./Images/trajectoryDetect.png" width = "500" align=center />
+	<img src="./Images/trajectoryDetect.png" width = "500" align=center />
 
 * Contour detection (iOS 14)
 
-<img src="./Images/contour.png" width = "300" align=center />
+	<img src="./Images/contour.png" width = "300" align=center />
 
 * Optical Flow (iOS 14)
 
-Analyze the movement bwtween two frames, and tell how each pixel flow in X and Y
+	Analyze the movement bwtween two frames, and tell how each pixel flow in X and Y
 
-<img src="./Images/OpticalFlow.png" width = "300" align=center />
+	<img src="./Images/OpticalFlow.png" width = "300" align=center />
 
 
 ## Natural Language

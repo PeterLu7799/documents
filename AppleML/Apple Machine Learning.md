@@ -9,9 +9,9 @@
 
 ## Outlines
 
-* Going through all the ML features that Apple provided so far. 
-* Introducing some core features
-	* Core ML
+* Going through all the Machine learning features that Apple provided so far. 
+* Core ML 3
+* Introducing the Apple's progress in the following tasks
 	* Vision
 	* Natural Language
 	* Speech

@@ -50,8 +50,7 @@
 <img src="./Images/coreml_level.png" width = "600" align=center />
 
 * [BNNS](https://developer.apple.com/documentation/accelerate/bnns) is the subset of Accelerate framework, it provides a collection of functions that you use to construct neural networks for training and inference via CPU's vector processor
-
-* [Metal Performance Shaders](https://developer.apple.com/documentation/metalperformanceshaders)
+* Metal Performance Shaders
 
 ### How to get Core ML models
 
@@ -144,9 +143,10 @@ Use the coremltools Python package to convert models from third-party training l
 
 	<img src="./Images/coremltools.png" width = "600" align=center />
 
-#### Metal Performance Shaders (MPS)
+#### [Metal Performance Shaders](https://developer.apple.com/documentation/metalperformanceshaders) (MPS)
 
-* MPS
+* MPSCNNConvolution
+* MPSCNNFullyConnected
 * [MPS Graph](https://developer.apple.com/videos/play/wwdc2020/10677/) (iOS 14)
 
 ## Vision

@@ -132,7 +132,7 @@ Use the coremltools Python package to convert models from third-party training l
 
 * [github](https://github.com/apple/coremltools)
 
-<img src="./Images/coremltools.png" width = "600" align=center />
+	<img src="./Images/coremltools.png" width = "600" align=center />
 
 #### Metal Performance Shaders (MPS)
 
@@ -251,17 +251,17 @@ The Natural Language framework provides a variety of natural language processing
 
 * Speech Recognition (iOS 10.0+)
 
-Perform speech recognition on live or prerecorded audio. Always assume that performing speech recognition requires a network connection.
+	Perform speech recognition on live or prerecorded audio. Always assume that performing speech recognition requires a network connection.
 
 * Supported languages
 
-<img src="./Images/SpeechRecognition.png" height = "400" align=center />
+	<img src="./Images/SpeechRecognition.png" height = "400" align=center />
 
 ## Sound
 
 * Sound classification (iOS 13.0+)
 
-Analyze streamed and file-based audio to classify it as a particular type. The framework performs its analysis using a Core ML model trained by an MLSoundClassifier
+	Analyze streamed and file-based audio to classify it as a particular type. The framework performs its analysis using a Core ML model trained by an MLSoundClassifier
 
 
 ## Core Image

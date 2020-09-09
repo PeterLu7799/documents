@@ -141,8 +141,6 @@ Use the coremltools Python package to convert models from third-party training l
 
 * [github](https://github.com/apple/coremltools)
 
-	<img src="./Images/coremltools.png" width = "600" align=center />
-
 #### [Metal Performance Shaders](https://developer.apple.com/documentation/metalperformanceshaders) (MPS)
 
 * MPSCNNConvolution

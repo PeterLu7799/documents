@@ -4,7 +4,7 @@
 
 * The performance of the device has been enhanced.
 * iOS 14 added several new features
-* To know what it has provided for further usage
+* To know what it provided and use for your further work
 
 
 ## Outlines
@@ -19,7 +19,6 @@
 
 ## Natural Language Processing frameworks
 
-* Vision
 * Speech
 * SoundAnalysis
 
@@ -42,15 +41,15 @@
 
 * [Metal Performance Shaders](https://developer.apple.com/documentation/metalperformanceshaders)
 
-### Models
+### How to get Core ML models
 
-* Core ML Models
-* Create ML
-* Turi Create
-* Core ML Tools
-* Metal Performance Shaders (MPS)
+1. Official Core ML models
+2. Create ML
+3. Turi Create
+4. Core ML Tools
+5. Metal Performance Shaders (MPS)
 
-#### Core ML Models
+#### Official Core ML models
 
 The following popular models are provided by Apple in its [website](https://developer.apple.com/machine-learning/models/) so far.
 
@@ -82,11 +81,10 @@ Create machine learning models for use in your app.
 	* Object detection
 	* Style transfer
 * Video
-	* Action classification [WWDC video](https://developer.apple.com/videos/play/wwdc2020/10043/)
-		it is also a classification task and powered by body pose estimation and Human body actions
-	* Style transfer 
+	* [Action classification](https://developer.apple.com/videos/play/wwdc2020/10043/) 
+	* [Style transfer](https://developer.apple.com/videos/play/wwdc2020/10642/) 
 * Motion
-	* Activity classification
+	* [Activity classification](https://developer.apple.com/videos/play/wwdc2019/426/)
 * Sound
 	* Sound classfication
 * Text
@@ -140,8 +138,6 @@ Use the coremltools Python package to convert models from third-party training l
 
 ## Vision
 
-Some outstanding features:
-
 * Still Image Analysis
 	* [Detecting Objects in Still Images](https://developer.apple.com/documentation/vision/detecting_objects_in_still_images?language=objc)
 * Image Sequence Analysis
@@ -182,6 +178,8 @@ Some outstanding features:
 
 	<img src="./Images/OpticalFlow.png" width = "300" align=center />
 
+A WWDC example of using Object Detection and Action Classification in Create ML along with the new Body Pose Estimation, Trajectory Detection, and Contour Detection features in the Vision framework
+[Explore the Action & Vision app](https://developer.apple.com/videos/play/wwdc2020/10099/)
 
 ## Natural Language
 

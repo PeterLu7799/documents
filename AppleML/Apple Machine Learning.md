@@ -4,6 +4,7 @@
 
 * The performance of the device has been enhanced.
 * iOS 14 added several new features
+* To know what it has provided for further usage
 
 
 ## Outlines
@@ -69,7 +70,7 @@ The following popular models are provided by Apple in its [website](https://deve
 
 Create machine learning models for use in your app.
 
-* Create Core ML models
+* Create Core ML models easily
 * Model previews
 * On-device training
 * eGPU training support
@@ -193,6 +194,31 @@ The Natural Language framework provides a variety of natural language processing
 * Linguistic Tags (iOS 12.0+)
 	* [Identifying Parts of Speech,](https://developer.apple.com/documentation/naturallanguage/identifying_parts_of_speech) classify nouns, verbs, adjectives, and other parts of speech in a string.
 	* [Named entity recognition](https://developer.apple.com/documentation/naturallanguage/identifying_people_places_and_organizations), identifying tokens as names of people, places, or organizations.
+	* Lemmatization, the idea behind lemmatizing a word is turning both lover and loving into the same lemma: love.
+
+		```swift
+		import NaturalLanguage
+	
+		func retrieveLemmas(from text: String) -> [String] {
+		    let tagger = NLTagger(tagSchemes: [.lemma])
+		    tagger.string = text
+		    
+		    var tags = [String]()
+		    let options: NLTagger.Options = [.omitPunctuation, .omitWhitespace]
+		    tagger.enumerateTags(in: text.startIndex..<text.endIndex, unit: .word, scheme: .lemma, options: options) { (tag, tokenRange) -> Bool in
+		        if let tag = tag {
+		            tags.append(tag.rawValue)
+		        }
+		        return true
+		    }
+		    return tags
+		}
+		
+		let lemmas = retrieveLemmas(from: "Loving someone is such a lovely feeling! I love it")
+		print(lemmas)
+		
+		// output: ["love", "someone", "be", "such", "a", "lovely", "feeling", "I", "love", "it"]
+		```
 * Text Embedding (iOS 13.0+)
 	* [Finding Similarities Between Pieces of Text.](https://developer.apple.com/documentation/naturallanguage/finding_similarities_between_pieces_of_text)
 * Natural Language Models by Create ML (iOS 12.0+)

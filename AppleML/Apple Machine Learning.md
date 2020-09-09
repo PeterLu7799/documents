@@ -4,7 +4,6 @@
 
 * The performance of the device has been enhanced.
 * iOS 14 added several new features
-* Privacy policy
 * To know what it provided and use for your further work
 
 

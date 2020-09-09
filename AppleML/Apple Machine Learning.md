@@ -134,7 +134,8 @@ Use the coremltools Python package to convert models from third-party training l
 
 #### Metal Performance Shaders (MPS)
 
-* MPS Graph (iOS 14)[WWDC2020](https://developer.apple.com/videos/play/wwdc2020/10677/)
+* MPS
+* [MPS Graph](https://developer.apple.com/videos/play/wwdc2020/10677/) (iOS 14)
 
 ## Vision
 
@@ -179,6 +180,7 @@ Use the coremltools Python package to convert models from third-party training l
 	<img src="./Images/OpticalFlow.png" width = "300" align=center />
 
 A WWDC example of using Object Detection and Action Classification in Create ML along with the new Body Pose Estimation, Trajectory Detection, and Contour Detection features in the Vision framework
+
 [Explore the Action & Vision app](https://developer.apple.com/videos/play/wwdc2020/10099/)
 
 ## Natural Language

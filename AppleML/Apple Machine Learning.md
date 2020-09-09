@@ -11,13 +11,25 @@
 
 * Going through all the ML features that Apple provided so far. 
 * Introducing some core features
+	* Core ML
+	* Vision
+	* Natural Language
+	* Speech
+	* Sound
 
 ## Frameworks 
-### Computer Vision frameworks
+### Computer Vision
+
+* CoreML
+* Vision
+* VisionKit
+* CoreImage
+* MetalPerformanceShaders
+* MetalPerformanceShadersGraph (iOS 14)
 
 <img src="./Images/Models_so_far.png" width = "600" align=center />
 
-### Natural Language Processing frameworks
+### Natural Language Processing
 
 * Speech
 * SoundAnalysis

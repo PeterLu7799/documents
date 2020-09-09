@@ -12,12 +12,12 @@
 * Going through all the ML features that Apple provided so far. 
 * Introducing some core features
 
-
-## Computer Vision frameworks
+## Frameworks 
+### Computer Vision frameworks
 
 <img src="./Images/Models_so_far.png" width = "600" align=center />
 
-## Natural Language Processing frameworks
+### Natural Language Processing frameworks
 
 * Speech
 * SoundAnalysis

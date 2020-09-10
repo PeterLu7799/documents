@@ -259,7 +259,7 @@ The Natural Language framework provides a variety of natural language processing
 		let embedding = NLEmbedding.wordEmbedding(for: .english)
 
 		let neighbors = embedding?.neighbors(for: embedding?.vector(for: "house") ?? [], maximumCount: 5) ?? []
-print(neighbors)
+		print(neighbors)
 
 		// output: [("building", 0.8805108666419983), ("mansion", 0.957676112651825), ("senate", 0.9628915190696716), ("brownstone", 0.982846200466156), ("bungalow", 0.9862753748893738)]
 

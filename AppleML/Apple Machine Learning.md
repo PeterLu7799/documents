@@ -289,13 +289,15 @@ print(neighbors)
 ## Core Image
 
 * Scaling
-* Morphology Operations
+* Morphology Operations (Prominent)
 * Noise Reduction
 * Edge Detection
 * Contrast enhance
-* Binarization
+* Binarization (Black and white)
 * Comparing images
 * Re-generating barcodes
+
+[CIFilter](https://developer.apple.com/documentation/coreimage/cifilter?language=objc)
 
 ## Alternatives
 

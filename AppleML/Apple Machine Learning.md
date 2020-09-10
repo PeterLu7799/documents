@@ -2,8 +2,8 @@
 
 ## Purpose
 
-* The performance of the device has been enhanced.
 * iOS 14 added several new features
+* The performance of the device has been enhanced.
 * To know what it provided and use for your further work
 
 

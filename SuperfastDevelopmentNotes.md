@@ -81,7 +81,7 @@
 6. PEPLocationAndGeoManager
 7. JVAuthConfig
 8. QHGroupUI.framework Push Appkey
-	* #define QHP_HJ_AppKey      @"aeu43brc02yh"
+	*  QHP_HJ_AppKey      @"aeu43brc02yh"
 
 
 ## In-app Purchase Products
@@ -118,7 +118,7 @@ Name | Type | ID
 骑士贵族特权续费(非自动续费型订阅) 	 | Non-Renewing Subscription | noble.50.ios.lite.huajiao.com
 
 
-## Controlling Keys
+## Remote Controlling Keys
 
 Key | comment
 ---- | ----

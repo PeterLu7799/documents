@@ -214,15 +214,22 @@ There’s no better time to diagnose your app’s energy footprint than when you
 	* High GPU Utilization
 	* Display Utilization
 
-### NSProcessInfoThermalState
+### NSProcessInfo
+
+NSProcessInfo provides the following property and notification to monitor the thermal changes
+
+#### NSProcessInfoThermalState
 
 The API thermalState is available since iOS 11, it's a enum and has four values
 
 * Nominal - The thermal state is within normal limits.
-* Fair - The thermal state is slightly elevated.
-* Serious - The thermal state is high.
-* Critical - The thermal state is significantly impacting the performance of the system and the device needs to cool down.
+* Fair - Recommendation: Defer non-user-visible activity.
+* Serious - System performance may be impacted. Recommendation: reduce application's usage of CPU, GPU and I/O, if possible. Switch to lower quality visual effects, reduce frame rates.
+* Critical - System performance is significantly impacted and the system needs to cool down. Recommendation: reduce application's usage of CPU, GPU, and I/O to the minimum level needed to respond to user actions. Consider stopping use of camera and other peripherals if your application is using them.
 
+#### NSProcessInfoThermalStateDidChangeNotification
+
+We can use this notification to monitor the thermal changes.
 
 ### Analyze Huajiao app energy utilization
 
@@ -232,18 +239,33 @@ App home page
 
 ![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/home_page.png?raw=true)
 
+<img src="https://github.com/PeterLu7799/documents/blob/master/energy_impact/home_page.png?raw=true" width = 50% height = 50% />
+
 As compare a sample demo app home page (a view with few UIControls)
 
 ![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/other_app.png?raw=true)
 
+App goes live
 
-App go live
+![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/start_live.png?raw=true)
 
-![]()
+App goes live after 3 mintues, thermal state is fair
 
-fair thermal after going live 3 minutes 
+![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/live_fair_3min.png?raw=true)
 
+App goes live after 8 mintues, thermal state is serious
 
+![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/live_serious_8min.png?raw=true)
+
+App's CPU gauge when going live
+
+![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/cpu-normal.png?raw=true)
+
+App started linkmic
+
+![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/linkmic.png?raw=true)
+
+### Analyze Huajiao Goes Live CPU, GPU and I/O Utilization via Instruments
 
 1. CPU utilization
 
@@ -252,7 +274,7 @@ fair thermal after going live 3 minutes
 3. I/O utilization 
 
 
-
+### How fix the thermal problem
 
 ## References
 

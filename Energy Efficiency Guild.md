@@ -228,11 +228,18 @@ The API thermalState is available since iOS 11, it's a enum and has four values
 
 Using iPhone X gets the following Energy Impact gauge
 
-1. App home page
+App home page
+
+![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/home_page.png?raw=true)
+
+As compare a sample demo app home page (a view with few UIControls)
+
+![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/other_app.png?raw=true)
 
 
+App go live
 
-
+![]()
 
 fair thermal after going live 3 minutes 
 

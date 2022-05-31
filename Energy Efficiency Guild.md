@@ -239,8 +239,6 @@ App home page
 
 ![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/home_page.png?raw=true)
 
-<img src="https://github.com/PeterLu7799/documents/blob/master/energy_impact/home_page.png?raw=true" width = 50% height = 50% />
-
 As compare a sample demo app home page (a view with few UIControls)
 
 ![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/other_app.png?raw=true)
@@ -269,6 +267,8 @@ App started linkmic
 
 1. CPU utilization
 
+Using Instruments' Time profile to see 
+
 2. GPU utilization
 
 3. I/O utilization 
@@ -289,3 +289,6 @@ App started linkmic
 ](https://help.apple.com/xcode/mac/current/#/dev308429d42)
 
 [NSProcessInfo](https://developer.apple.com/documentation/foundation/nsprocessinfo?language=objc)
+
+[An overview of the time profiler in Instruments
+](https://augmentedcode.io/2021/05/24/an-overview-of-the-time-profiler-in-instruments/)

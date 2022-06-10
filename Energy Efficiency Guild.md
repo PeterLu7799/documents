@@ -4,6 +4,13 @@
 
 ### Energy Essertials
 
+#### A great user experience requires:
+
+* Great battery life
+* Awesome speed
+* Responsiveness
+* Cool device
+
 #### Fundamental Concepts
 
 1. CPU. The CPU is a major consumer of energy. It should do so wisely—by doing work only when necessary through batching, scheduling, and prioritizing.
@@ -207,8 +214,8 @@ There’s no better time to diagnose your app’s energy footprint than when you
 
 2. The following items will aspect the thermal problem
 	
-	* Overhead - represents energy use as a result of bringing up radios and other system resources.
-	* High CPU Utilization
+	* Overhead - represents energy use as a result of bringing up radios and other system resources your app needs to perform work.
+	* High CPU Utilization - CPU usage of greater than 20%. 
 	* Network And Bluetooth Activity
 	* Location Activity
 	* High GPU Utilization
@@ -273,12 +280,30 @@ Using Instruments' Time profile to see
 
 3. I/O utilization 
 
+### Tools for analyzing the utilization
+
+1. Xcode Organizer Metrics
+2. Xcode Debug 
+2. Instruments
+3. [火山引擎](https://www.volcengine.com/docs/6431/95178)
+
 
 ### How fix the thermal problem
 
+#### Has this problem
+
+1. Turning off the unnecessary functions or features when it get hot
+2. Optimized the code or algorithm to reduce the CPU or GPU utilization
+3. 
+
+#### No this problem
+
+1. If there is no high CPU or GPU usage in your app just as the normal process to develop the app
+2. 
+
 ## References
 
-[Energy Efficiency Guide for iOS Apps](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/EnergyGuide-iOS/MinimizeTimerUse.html#//apple_ref/doc/uid/TP40015243-CH41-SW1)、
+[Energy Efficiency Guide for iOS Apps](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/EnergyGuide-iOS/index.html#//apple_ref/doc/uid/TP40015243-CH3-SW1)、
 
 [Analyzing the Performance of Your Shipping App
 ](https://developer.apple.com/documentation/xcode/analyzing-the-performance-of-your-shipping-app)

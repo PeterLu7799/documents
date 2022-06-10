@@ -13,13 +13,13 @@
 
 #### Fundamental Concepts
 
-1. CPU. The CPU is a major consumer of energy. It should do so wisely—by doing work only when necessary through batching, scheduling, and prioritizing.
-2. Device wake
-3. Networking operations. Most iOS apps perform networking operations. When networking occurs, components such as cellular radios and Wi-Fi power up and use energy. By batching and reducing transactions, compressing data, and appropriately handling errors, your app can make significant contributions to energy conservation.
-4. Graphics, animations, and video. Every time your app’s content updates on screen, it uses energy to produce those pixels. Animations and videos can be especially taxing. Unexpected and unnecessary content updates also drain power. Your app should avoid updating content when its interface isn’t visible to the user. 
-5. Location. Many apps make location requests in order to log a user’s physical activity or provide environment-based alerts. Energy use increases with greater precision and longer location requests. Your app should reduce accuracy and duration of location activity whenever possible. Stop location requests when no longer needed.
-6. Motion Continuous unwarranted requests for accelerometer, gyroscope, magnetometer, and other motion data waste energy. Request motion updates only when necessary, and stop updates when data is no longer needed.
-7. Bluetooth. High periods of Bluetooth activity can drain the battery of the iOS device and the Bluetooth device. Whenever possible, batch and buffer Bluetooth activity, and reduce polling for data.
+* CPU. The CPU is a major consumer of energy. It should do so wisely—by doing work only when necessary through batching, scheduling, and prioritizing.
+* Device wake
+* Networking operations. Most iOS apps perform networking operations. When networking occurs, components such as cellular radios and Wi-Fi power up and use energy. By batching and reducing transactions, compressing data, and appropriately handling errors, your app can make significant contributions to energy conservation.
+* Graphics, animations, and video. Every time your app’s content updates on screen, it uses energy to produce those pixels. Animations and videos can be especially taxing. Unexpected and unnecessary content updates also drain power. Your app should avoid updating content when its interface isn’t visible to the user. 
+* Location. Many apps make location requests in order to log a user’s physical activity or provide environment-based alerts. Energy use increases with greater precision and longer location requests. Your app should reduce accuracy and duration of location activity whenever possible. Stop location requests when no longer needed.
+* Motion Continuous unwarranted requests for accelerometer, gyroscope, magnetometer, and other motion data waste energy. Request motion updates only when necessary, and stop updates when data is no longer needed.
+* Bluetooth. High periods of Bluetooth activity can drain the battery of the iOS device and the Bluetooth device. Whenever possible, batch and buffer Bluetooth activity, and reduce polling for data.
 
 #### CPU Usage and Power Draw
 provides a rough comparison of varying CPU usage against an idle state.
@@ -38,7 +38,7 @@ Tasks your app performs have a dynamic cost—how much energy your app uses by d
 ![](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/EnergyGuide-iOS/Art/2-2_fixed-vs-dynamic-energy-cost_2x.png)
 
 #### Trading Dynamic Cost for Fixed Cost
-Your app can avoid sporadic work by batching tasks and performing them less frequently. For example, instead of performing a series of sequential tasks on the same thread, distribute those same tasks simultaneously across multiple threads, as shown in Figure 2-3. Each time the CPU is accessed, memory, caches, buses, and so forth must be powered up. By batching activity, components can be powered up once and used over a shorter period of time.
+Your app can avoid sporadic work by batching tasks and performing them less frequently. For example, instead of performing a series of sequential tasks on the same thread, distribute those same tasks simultaneously across multiple threads, as shown in Figure below. Each time the CPU is accessed, memory, caches, buses, and so forth must be powered up. By batching activity, components can be powered up once and used over a shorter period of time.
 
 ![](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/EnergyGuide-iOS/Art/2-3_multi-threading-power_2x.png)
 
@@ -54,6 +54,14 @@ iOS employs a CPU Monitor that watches background apps for excessive CPU usage a
 
 #### Prioritize Work with Quality of Service Classes
 
+Apps and operations compete to use finite resources—CPU, memory, network interfaces, and so on. In order to remain responsive and efficient, the system needs to prioritize tasks and make intelligent decisions about when to execute them.
+
+Work that directly impacts the user, such as UI updates, is extremely important and takes precedence over other work that may be occurring in the background. This higher priority work often uses more energy, as it may require substantial and immediate access to system resources.
+
+As a developer, you can help the system prioritize more effectively by categorizing your app’s work, based on importance. Even if you’ve implemented other efficiency measures, such as deferring work until an optimal time, the system still needs to perform some level of prioritization. Therefore, it is still important to categorize the work your app performs.
+
+A quality of service (QoS) class allows you to categorize work to be performed by NSOperation, NSOperationQueue, NSThread objects, dispatch queues, and pthreads (POSIX threads).
+
 Primary QoS classes (shown in order of priority)
 
 QoS Class | Type of work and focus of QoS | Duration of work to be performed
@@ -65,13 +73,16 @@ Background | Work that operates in the background and isn’t visible to the use
 
 #### Minimize Timer Use
 
-1.The High Cost of Timers
+The High Cost of Timers
+
+A timer lets you schedule a delayed or periodic action. A timer waits until a certain interval has elapsed and then fires, performing a specific action such as sending a message to its target object.
 
 * Apps use timers to poll for state changes when they should respond to events instead.
 * Other apps use timers as synchronization tools when they should use semaphores or other locks to achieve the greatest efficiency. 
 * Some timers are executed without suitable timeouts, causing them to continue firing when they’re no longer needed.
 
-2. Get Event Notifications Without Using Timers
+1. Get Event Notifications Without Using Timers
+2. Use GCD Tools for Synchronization Instead of Timers
 3. If You Must Use a Timer, Employ It Efficiently
 4. Specify Suitable Timeouts
 5. Invalidate Repeating Timers You No Longer Need
@@ -155,6 +166,11 @@ If a transaction fails, try again when the network becomes available.
 2. Delay Deferrable Network Operations
 
 	For upload and download activities over HTTP, the NSURLSession API provides the ability to create deferrable background sessions. A background session lets your app send URL requests to the system, which performs them at an optimal time and notifies your app when they are complete
+
+* Activity is performed out-of-process. Because the network operations are performed by the system, your app stays responsive, letting the user continue doing other work. Your app also doesn’t need to continue running for activity to complete.
+* Notifications keep your app informed. The system notifies your app when the activity is completed and if problems occur. Your app can even quit, relaunch, reconnect to a previous session, and resume receiving notifications. If your app isn’t running when the activities complete, or if authentication is required, the system can relaunch your app in the background.
+* Network activity is performed efficiently. It’s inefficient to perform network activity over a slow connection. Bandwidth monitoring lets the system defer the activity when throughput falls below a certain threshold.
+* Activity self-corrects. URL sessions can be automatically retried by the system when errors occur.
 
 	To use deferrable background sessions:
 	

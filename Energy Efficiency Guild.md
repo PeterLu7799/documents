@@ -167,10 +167,10 @@ If a transaction fails, try again when the network becomes available.
 
 	For upload and download activities over HTTP, the NSURLSession API provides the ability to create deferrable background sessions. A background session lets your app send URL requests to the system, which performs them at an optimal time and notifies your app when they are complete
 
-* Activity is performed out-of-process. Because the network operations are performed by the system, your app stays responsive, letting the user continue doing other work. Your app also doesn’t need to continue running for activity to complete.
-* Notifications keep your app informed. The system notifies your app when the activity is completed and if problems occur. Your app can even quit, relaunch, reconnect to a previous session, and resume receiving notifications. If your app isn’t running when the activities complete, or if authentication is required, the system can relaunch your app in the background.
-* Network activity is performed efficiently. It’s inefficient to perform network activity over a slow connection. Bandwidth monitoring lets the system defer the activity when throughput falls below a certain threshold.
-* Activity self-corrects. URL sessions can be automatically retried by the system when errors occur.
+	* Activity is performed out-of-process. Because the network operations are performed by the system, your app stays responsive, letting the user continue doing other work. Your app also doesn’t need to continue running for activity to complete.
+	* Notifications keep your app informed. The system notifies your app when the activity is completed and if problems occur. Your app can even quit, relaunch, reconnect to a previous session, and resume receiving notifications. If your app isn’t running when the activities complete, or if authentication is required, the system can relaunch your app in the background.
+	* Network activity is performed efficiently. It’s inefficient to perform network activity over a slow connection. Bandwidth monitoring lets the system defer the activity when throughput falls below a certain threshold.
+	* Activity self-corrects. URL sessions can be automatically retried by the system when errors occur.
 
 	To use deferrable background sessions:
 	
@@ -183,25 +183,37 @@ If a transaction fails, try again when the network becomes available.
 
 ### Use Graphics, Animations, and Video Efficiently
 
-* Avoid Extraneous Graphics and Animations
-* Restrict UI When Playing Full-Screen Video
+1. Avoid Extraneous Graphics and Animations
+
+	* Reduce the number of views your app uses.
+	* Reduce the use of opacity
+	* Eliminate drawing when your app
+	* Use lower frame rates for animations whenever possible
+	* Use a consistent frame rate when performing an animation
+	* Avoid using multiple frame rates at once on screen
+	* Use recommended frameworks when developing games
+
+2. Restrict UI When Playing Full-Screen Video
+
+	iOS is optimized to conserve energy by managing resources efficiently while playing full-screen video. However, additional layers of UI above or below a playing video can degrade this optimization by ramping up additional resources, such as the GPU.
 
 ### Optimize Location and Motion
 
 * Reduce Location Accuracy and Duration
 * Reduce the Frequency of Motion Updates
 
-### Monitor Energy Use
+### Monitor Energy Usage
 
 #### Measure Energy Impact with Xcode
 
 There’s no better time to diagnose your app’s energy footprint than when you are in the process of developing your app. Xcode includes a number of features that can help.
 
 1. Debugging Gauges
-	* Energy impact gauge
-	* CPU gauge
-	* Disk usage gauge
-	* Network usage gauge
+	* Energy impact gauge - Provides live information about your app’s energy usage as it runs, and displays a graph of recent energy-related activity.
+	* CPU gauge - Monitors your app and reports on its current and historical CPU usage. Spikes that occur when your app is supposed to have low CPU activity or when your app is idle may indicate problem areas where optimizations can be made.
+	* Disk usage gauge - Alerts you to disk read and write activity and files your app has opened. Use this gauge to identify unexpected or recurring small I/O activity.
+	* Network usage gauge - Accounts for all inbound and outbound network traffic. Look for discretionary activity that your app performs directly, and consider updating it to be performed by the system at more energy-optimal times.
+
 
 #### Measure Energy Impact with Instruments
 

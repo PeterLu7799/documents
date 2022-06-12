@@ -227,6 +227,7 @@ There’s no better time to diagnose your app’s energy footprint than when you
 * Your Custom Template Here.
 
 
+
 ## Thermal Problem
 
 ### What is a thermal problem
@@ -248,6 +249,10 @@ There’s no better time to diagnose your app’s energy footprint than when you
 	* Location Activity
 	* High GPU Utilization
 	* Display Utilization
+
+### MetricKit
+
+
 
 ### NSProcessInfo
 
@@ -320,6 +325,13 @@ Using Instruments' Time profile to see
 
 #### Has this problem
 
+1. Reducing CPU Usage
+
+2. Reducing GPU Usage
+
+3. Reducing I/O Usage
+
+
 1. Turning off the unnecessary functions or features when it get hot
 2. Optimized the code or algorithm to reduce the CPU or GPU utilization
 3. 
@@ -345,3 +357,5 @@ Using Instruments' Time profile to see
 
 [An overview of the time profiler in Instruments
 ](https://augmentedcode.io/2021/05/24/an-overview-of-the-time-profiler-in-instruments/)
+
+[Viewing Your GPU Workload with the Metal Debugger](https://developer.apple.com/documentation/metal/debugging_tools/viewing_your_gpu_workload_with_the_metal_debugger?language=objc)

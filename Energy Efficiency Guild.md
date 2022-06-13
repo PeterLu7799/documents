@@ -233,7 +233,10 @@ There’s no better time to diagnose your app’s energy footprint than when you
 ### What is a thermal problem
 
 1. As the heat increases, the system decreases heat by reducing the speed of the processors. 
-2. If running the app make the device hot or even burning hot then the user will refuse to use the app. 
+2. Bad user experience, if running the app make the device burning hot then the user will use the app reluctantly. 
+3. Get the your device stop to work
+
+
 
 ### How to solve the thermal problem
 

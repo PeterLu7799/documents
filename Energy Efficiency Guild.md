@@ -236,7 +236,7 @@ There’s no better time to diagnose your app’s energy footprint than when you
 2. Bad user experience, if running the app make the device burning hot then the user will use the app reluctantly. 
 3. Get the your device stop to work
 
-![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/iphone_thermal.jpeg?raw=true =200x)
+![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/iphone_thermal.jpeg?raw=true)
 
 ### What cause the thermal problem?
 

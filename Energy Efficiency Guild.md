@@ -288,8 +288,11 @@ MetricKit complement Xcode Organizer Metrics by providing a programmatic way to 
 	* Terminations
 
 3. Xcode Debug gauges
-4. Instruments
 
+	![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/debug_gauges.png?raw=true)
+
+4. Instruments
+	
 
 ### Third party tools
 
@@ -327,7 +330,15 @@ App started linkmic
 
 ![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/linkmic.png?raw=true)
 
-### Analyze Huajiao Goes Live CPU, GPU and I/O Utilization via Instruments
+GPU 
+
+![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/GPU_FPS.png?raw=true)
+
+File
+
+![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/file_io.png?raw=true)
+
+### Analyze Huajiao Go Live CPU, GPU and I/O Utilization via Instruments
 
 1. CPU utilization
 
@@ -340,20 +351,14 @@ Using Instruments' Time profile to see
 
 ### How fix the thermal problem
 
-#### Has this problem
-
-Decreasing the usage of CPU, GPU and I/O. 
-
+The goal is to decrease the usage of CPU, GPU and I/O. 
 
 1. Turning off the unnecessary functions or features when it get hot
 2. Optimized the code or algorithm to reduce the CPU or GPU utilization
-3. Is there some no technoligy we can use?
+3. Is there some new technology we can use?
+4. If there is no high CPU or GPU usage in your app just as the normal process to develop the app
 
 
-#### No this problem
-
-1. If there is no high CPU or GPU usage in your app just as the normal process to develop the app
-2. 
 
 
 ## References

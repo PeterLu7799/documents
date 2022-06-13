@@ -338,6 +338,11 @@ File
 
 ![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/file_io.png?raw=true)
 
+Network
+
+![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/network.png?raw=true)
+
+
 ### Analyze Huajiao Go Live CPU, GPU and I/O Utilization via Instruments
 
 1. CPU utilization

@@ -95,7 +95,7 @@ A timer lets you schedule a delayed or periodic action. A timer waits until a ce
 3. Read and write data sequentially whenever possible
 4. Read and write larger blocks of data from files whenever possible, keeping in mind that reading too much data at once might cause other problems.
 5. For reading or writing significant amounts of data, consider using dispatch_io
-6. f your data consists of structured content that is randomly accessed, store it in a database
+6. If your data consists of structured content that is randomly accessed, store it in a database
 7. Understand how the system caches file data and know how to optimize the use of those caches
 
 #### React to Low Power Mode on iPhones（考虑低电量模式）
@@ -215,7 +215,6 @@ There’s no better time to diagnose your app’s energy footprint than when you
 * Network Profiling Template. Use this template to analyze the TCP/IP and UDP/IP connections your app uses.
 * Time Profiler Profiling Template. Use this template to perform low-overhead time-based sampling of running processes. Time Profiler watches the running threads in your app and takes samples at regular intervals. A complete backtrace is collected for each sample, allowing you to drill down into a sample to find exactly where in your code large amounts of time are being spent.
 * Your Custom Template Here.
-
 
 
 ## Thermal Problem（发热问题）
@@ -349,7 +348,7 @@ Network
 
 ### Analyze Huajiao Go Live CPU, GPU and I/O Utilization via Instruments（通过Instruments分析花椒的CPU，GPU和I/O使用情况）
 
-* CPU Profile
+* CPU Profile (sample rate)
 * GPU Profile
 * I/O Profile
 
@@ -357,11 +356,12 @@ Network
 
 Optimize your app’s performance by monitoring the thermal state and reducing system usage as the thermal state increases. The goal is to decrease the usage of CPU, GPU and I/O. 
 
-1. Pay attention to the thermal problem the sooner the better.
-2. Turning off the unnecessary functions or features when it get hot
-3. Optimized the code or algorithm to reduce the CPU or GPU utilization
-4. Is there some new technology we can use?
-5. If there is no high CPU or GPU usage in your app just as the normal process to develop the app
+1. Pay attention to the thermal problem, the sooner the better.
+2. Monitor the CPU, GPU and I/O to see if there's any exception usage of them or any bugs which use them overlaod.
+3. If it's possible to turn off the unnecessary functions or features when it get hot, for example reduce the frame rate, 
+4. Optimized the code or algorithm to reduce the CPU or GPU utilization
+5. Is there some new technology we can use?
+6. Can some work be done by a special hardware rather than using the software to implement it.
 
 ## References（参考文献）
 

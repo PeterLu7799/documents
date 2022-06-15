@@ -204,7 +204,7 @@ There’s no better time to diagnose your app’s energy footprint than when you
 * Energy impact gauge - Provides live information about your app’s energy usage as it runs, and displays a graph of recent energy-related activity.
 * Disk usage gauge - Alerts you to disk read and write activity and files your app has opened. Use this gauge to identify unexpected or recurring small I/O activity.
 * Network usage gauge - Accounts for all inbound and outbound network traffic. Look for discretionary activity that your app performs directly, and consider updating it to be performed by the system at more energy-optimal times.
-* FPS gauge - Looked at the frame per second and frame time
+* FPS gauge - Looks at the frame per second and frame time
 
 ![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/debug_gauges.png?raw=true)
 	
@@ -212,7 +212,7 @@ There’s no better time to diagnose your app’s energy footprint than when you
 
 * Activity Monitor Profiling Template. Use this template to monitor overall CPU, disk I/O, and network usage.
 * Core Animation Profiling Template. Use this template to measure graphics performance and CPU usage. Enable the Flash Updated Regions setting of the template’s Core Animation instrument to see each screen update occurring in your app and watch for unnecessary or unexpected updates.
-* GPU Driver Profiling Template. Use this template to measure GPU driver statistics and sample active CPU usage.
+* GPU Profiling Template. Use this template to measure GPU shader usage and sample active CPU usage.
 * Location Energy Instrument. Use this instrument to measure the energy impact and duration of requests to Core Location.
 * Metal System Trace Profiling Template. Use this template to measure the performance of iOS Metal applications by tracing information from the application, driver, and GPU layers.
 * Network Profiling Template. Use this template to analyze the TCP/IP and UDP/IP connections your app uses.

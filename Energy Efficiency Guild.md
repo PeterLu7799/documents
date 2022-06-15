@@ -125,10 +125,10 @@ Your app can register to receive notifications when the power state (Low Power M
 
 2. Networking Variable Effect on Energy
 
-1. Cellular network activity requires significantly more energy than activity over Wi-Fi.
-2. Poor or fluctuating signal conditions may result in slower or problematic transactions, which must be retried.
-3. Low network throughput (bandwidth) means radios have to stay on longer to perform transactions.
-4. Even geographic location and choice of cellular provider can impact energy consumption, as signal conditions and throughput can vary.
+	* Cellular network activity requires significantly more energy than activity over Wi-Fi.
+	* Poor or fluctuating signal conditions may result in slower or problematic transactions, which must be retried.
+	* Low network throughput (bandwidth) means radios have to stay on longer to perform transactions.
+	* Even geographic location and choice of cellular provider can impact energy consumption, as signal conditions and throughput can vary.
 
 #### Minimize Networking（少用网络）
 

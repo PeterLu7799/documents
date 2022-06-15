@@ -32,7 +32,7 @@ Idle | 10x greater power draw over sleep
 100% CPU use | 10x power draw over idle
 
 #### Fixed Cost and Dynamic Cost（固定开销，动态开销）
-Tasks your app performs have a dynamic cost—how much energy your app uses by doing actual work. They also have a fixed cost—how much energy is used by bringing the system and various resources up in order for your app to do work, and back down after that work is complete. When lots of sporadic work is occurring, there are dynamic costs and a significant fixed cost too, as resources may never get the chance to reach true idle between the sporadic tasks. This situation results in a lot of energy being used for a relatively small amount of actual work.
+Tasks your app performs have a dynamic cost—how much energy your app uses by doing actual work. They also have a fixed cost—how much energy is used by bringing the system and various resources up in order for your app to do work, and back down after that work is complete. When lots of sporadic work (零星的工作) is occurring, there are dynamic costs and a significant fixed cost too, as resources may never get the chance to reach true idle between the sporadic tasks. This situation results in a lot of energy being used for a relatively small amount of actual work.
 
 ![](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/EnergyGuide-iOS/Art/2-2_fixed-vs-dynamic-energy-cost_2x.png)
 

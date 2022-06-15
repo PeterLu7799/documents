@@ -200,11 +200,11 @@ If a transaction fails, try again when the network becomes available.
 There’s no better time to diagnose your app’s energy footprint than when you are in the process of developing your app. Xcode includes a number of features in the debug gauges that can help.
 
 * CPU gauge - Monitors your app and reports on its current and historical CPU usage. Spikes that occur when your app is supposed to have low CPU activity or when your app is idle may indicate problem areas where optimizations can be made.
-* Memory - Monitor the memeory usage.
+* Memory gauge - Monitor the memeory usage.
 * Energy impact gauge - Provides live information about your app’s energy usage as it runs, and displays a graph of recent energy-related activity.
 * Disk usage gauge - Alerts you to disk read and write activity and files your app has opened. Use this gauge to identify unexpected or recurring small I/O activity.
 * Network usage gauge - Accounts for all inbound and outbound network traffic. Look for discretionary activity that your app performs directly, and consider updating it to be performed by the system at more energy-optimal times.
-* FPS - Looked at the frame per second and frame time
+* FPS gauge - Looked at the frame per second and frame time
 
 ![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/debug_gauges.png?raw=true)
 	

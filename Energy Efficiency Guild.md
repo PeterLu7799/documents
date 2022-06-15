@@ -349,12 +349,9 @@ Network
 
 ### Analyze Huajiao Go Live CPU, GPU and I/O Utilization via Instruments（通过Instruments分析花椒的CPU，GPU和I/O使用情况）
 
-1. CPU utilization
-
-2. GPU utilization
-
-3. I/O utilization 
-
+* CPU Profile
+* GPU Profile
+* I/O Profile
 
 ### How to fix the thermal problem（怎么修复发热问题）
 
@@ -366,10 +363,7 @@ Optimize your app’s performance by monitoring the thermal state and reducing s
 4. Is there some new technology we can use?
 5. If there is no high CPU or GPU usage in your app just as the normal process to develop the app
 
-
-
-
-## References
+## References（参考文献）
 
 [Energy Efficiency Guide for iOS Apps](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/EnergyGuide-iOS/index.html#//apple_ref/doc/uid/TP40015243-CH3-SW1)
 

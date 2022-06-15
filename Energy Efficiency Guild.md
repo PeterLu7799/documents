@@ -1,17 +1,17 @@
-# iOS Energy Efficiency And Thermal Problem
+# iOS Energy Efficiency And Thermal Problem (能效及发热问题)
 
-## Energy Efficiency
+## Energy Efficiency （能效）
 
-### Energy Essertials
+### Energy Essertials（耗能的本质）
 
-#### A great user experience requires:
+#### A great user experience requires（好的用户体验）
 
 * Great battery life
 * Awesome speed
 * Responsiveness
 * Cool device
 
-#### Fundamental Concepts
+#### Fundamental Concepts（基本原理）
 
 * CPU. The CPU is a major consumer of energy. It should do so wisely—by doing work only when necessary through batching, scheduling, and prioritizing.
 * Device wake
@@ -21,7 +21,7 @@
 * Motion Continuous unwarranted requests for accelerometer, gyroscope, magnetometer, and other motion data waste energy. Request motion updates only when necessary, and stop updates when data is no longer needed.
 * Bluetooth. High periods of Bluetooth activity can drain the battery of the iOS device and the Bluetooth device. Whenever possible, batch and buffer Bluetooth activity, and reduce polling for data.
 
-#### CPU Usage and Power Draw
+#### CPU Usage and Power Draw（CPU使用及耗电关系）
 provides a rough comparison of varying CPU usage against an idle state.
 
 State | Times
@@ -31,18 +31,19 @@ Idle | 10x greater power draw over sleep
 10% CPU use | 2x power draw over idle
 100% CPU use | 10x power draw over idle
 
-#### Fixed Cost and Dynamic Cost
+#### Fixed Cost and Dynamic Cost（固定开销，动态开销）
 Tasks your app performs have a dynamic cost—how much energy your app uses by doing actual work. They also have a fixed cost—how much energy is used by bringing the system and various resources up in order for your app to do work, and back down after that work is complete. When lots of sporadic work is occurring, there are dynamic costs and a significant fixed cost too, as resources may never get the chance to reach true idle between the sporadic tasks. This situation results in a lot of energy being used for a relatively small amount of actual work.
 
 ![](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/EnergyGuide-iOS/Art/2-2_fixed-vs-dynamic-energy-cost_2x.png)
 
-#### Trading Dynamic Cost for Fixed Cost
+#### Trading Dynamic Cost for Fixed Cost（转化动态开销到固定开销上）
 Your app can avoid sporadic work by batching tasks and performing them less frequently. For example, instead of performing a series of sequential tasks on the same thread, distribute those same tasks simultaneously across multiple threads, as shown in Figure below. Each time the CPU is accessed, memory, caches, buses, and so forth must be powered up. By batching activity, components can be powered up once and used over a shorter period of time.
 
 ![](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/EnergyGuide-iOS/Art/2-3_multi-threading-power_2x.png)
 
-### Reduce and Prioritize Work
-#### Work Less in the Background
+### Reduce and Prioritize Work（减少并组织工作优先级）
+
+#### Work Less in the Background（减少后台工作）
 
 Resolving Runaway Background App Crashes
 iOS employs a CPU Monitor that watches background apps for excessive CPU usage and terminates them if they fall outside of certain limits. Most apps performing normal background activity should never encounter this situation. Example of an Excess CPU Usage Crash Log Entry
@@ -51,7 +52,7 @@ iOS employs a CPU Monitor that watches background apps for excessive CPU usage a
 2. Exception Subtype: CPU_FATAL
 3. Exception Message: (Limit 80%) Observed 89% over 60 seconds
 
-#### Prioritize Work with Quality of Service Classes
+#### Prioritize Work with Quality of Service Classes（用QoS分类来组织优先级）
 
 Apps and operations compete to use finite resources—CPU, memory, network interfaces, and so on. In order to remain responsive and efficient, the system needs to prioritize tasks and make intelligent decisions about when to execute them.
 
@@ -70,7 +71,7 @@ User-initiated | Work that the user has initiated and requires immediate results
 Utility | Work that may take some time to complete and doesn’t require an immediate result, such as downloading or importing data. Utility tasks typically have a progress bar that is visible to the user. Focuses on providing a balance between responsiveness, performance, and energy efficiency. | Work takes a few seconds to a few minutes.
 Background | Work that operates in the background and isn’t visible to the user, such as indexing, synchronizing, and backups. Focuses on energy efficiency. | Work takes significant time, such as minutes or hours.
 
-#### Minimize Timer Use
+#### Minimize Timer Use（少用Timer）
 
 The High Cost of Timers
 
@@ -87,7 +88,7 @@ A timer lets you schedule a delayed or periodic action. A timer waits until a ce
 5. Invalidate Repeating Timers You No Longer Need
 6. Specify a Tolerance for Batching Timers Systemwide
 
-#### Minimize I/O
+#### Minimize I/O（少进行I/O操作）
 
 1. Minimize data writes
 2. Avoid accessing memory too frequently
@@ -97,7 +98,7 @@ A timer lets you schedule a delayed or periodic action. A timer waits until a ce
 6. f your data consists of structured content that is randomly accessed, store it in a database
 7. Understand how the system caches file data and know how to optimize the use of those caches
 
-#### React to Low Power Mode on iPhones
+#### React to Low Power Mode on iPhones（考虑低电量模式）
 
 Users who wish to prolong their iPhone’s battery life can enable Low Power Mode under Settings > Battery. In Low Power Mode, iOS conserves battery life by enacting certain energy-saving measures. For example, the system may:
 
@@ -112,9 +113,9 @@ Users who wish to prolong their iPhone’s battery life can enable Low Power Mod
 Your app can register to receive notifications when the power state (Low Power Mode is enabled or disabled) of the device changes.
 
 
-### Minimize and Defer Networking
+### Minimize and Defer Networking（少用或是延迟网络操作）
 
-#### Energy and Networking
+#### Energy and Networking（能耗与网络）
 
 1. Device Networking Overhead
 
@@ -129,7 +130,7 @@ Your app can register to receive notifications when the power state (Low Power M
 3. Low network throughput (bandwidth) means radios have to stay on longer to perform transactions.
 4. Even geographic location and choice of cellular provider can impact energy consumption, as signal conditions and throughput can vary.
 
-#### Minimize Networking
+#### Minimize Networking（少用网络）
 
 1. Reduce Data Sizes
 2. Reduce Media Quality and Size
@@ -138,23 +139,23 @@ Your app can register to receive notifications when the power state (Low Power M
 5. Cache Data
 6. Use Pausable and Resumable Transactions
 
-#### Handle Errors
+#### Handle Errors（处理错误）
 
 Don’t attempt to perform network operations when the network is unavailable.
 
-#### Check Signal Conditions
+#### Check Signal Conditions（检查信号状态）
 
 If network operations fail, use the SCNetworkReachability API to to see whether the host is available.
 
-#### Provide an Escape Route
+#### Provide an Escape Route（提供一个超时时间）
 
 Don’t wait forever for a response from the server that never comes. Let the user cancel long-running or stalled network operations, and set appropriate timeouts so your app doesn’t keep connections open needlessly.
 
-#### Use Retry Policies
+#### Use Retry Policies（重试策略）
 
 If a transaction fails, try again when the network becomes available.
 
-### Defer Networking
+### Defer Networking（延迟网络操作）
 
 1. Batch Transactions
 
@@ -171,7 +172,7 @@ If a transaction fails, try again when the network becomes available.
 	* Network activity is performed efficiently. It’s inefficient to perform network activity over a slow connection. Bandwidth monitoring lets the system defer the activity when throughput falls below a certain threshold.
 	* Activity self-corrects. URL sessions can be automatically retried by the system when errors occur.
 
-### Use Graphics, Animations, and Video Efficiently
+### Use Graphics, Animations, and Video Efficiently（有效使用图形，动画和视频）
 
 1. Avoid Extraneous Graphics and Animations
 
@@ -187,24 +188,24 @@ If a transaction fails, try again when the network becomes available.
 
 	iOS is optimized to conserve energy by managing resources efficiently while playing full-screen video. However, additional layers of UI above or below a playing video can degrade this optimization by ramping up additional resources, such as the GPU.
 
-### Optimize Location and Motion
+### Optimize Location and Motion（优化使用定位和感应组件）
 
 * Reduce Location Accuracy and Duration
 * Reduce the Frequency of Motion Updates
 
-### Monitor Energy Usage
+### Monitor Energy Usage（监控能耗使用）
 
-#### Measure Energy Impact with Xcode
+#### Measure Energy Impact with Xcode（利用XCode监控）
 
-There’s no better time to diagnose your app’s energy footprint than when you are in the process of developing your app. Xcode includes a number of features that can help.
+There’s no better time to diagnose your app’s energy footprint than when you are in the process of developing your app. Xcode includes a number of features in the debug gauges that can help.
 
-1. Debugging Gauges
-	* Energy impact gauge - Provides live information about your app’s energy usage as it runs, and displays a graph of recent energy-related activity.
-	* CPU gauge - Monitors your app and reports on its current and historical CPU usage. Spikes that occur when your app is supposed to have low CPU activity or when your app is idle may indicate problem areas where optimizations can be made.
-	* Disk usage gauge - Alerts you to disk read and write activity and files your app has opened. Use this gauge to identify unexpected or recurring small I/O activity.
-	* Network usage gauge - Accounts for all inbound and outbound network traffic. Look for discretionary activity that your app performs directly, and consider updating it to be performed by the system at more energy-optimal times.
+* Energy impact gauge - Provides live information about your app’s energy usage as it runs, and displays a graph of recent energy-related activity.
+* CPU gauge - Monitors your app and reports on its current and historical CPU usage. Spikes that occur when your app is supposed to have low CPU activity or when your app is idle may indicate problem areas where optimizations can be made.
+* Disk usage gauge - Alerts you to disk read and write activity and files your app has opened. Use this gauge to identify unexpected or recurring small I/O activity.
+* Network usage gauge - Accounts for all inbound and outbound network traffic. Look for discretionary activity that your app performs directly, and consider updating it to be performed by the system at more energy-optimal times.
+* FPS - 
 
-#### Measure Energy Impact with Instruments
+#### Measure Energy Impact with Instruments（使用Instruments）
 
 * Activity Monitor Profiling Template. Use this template to monitor overall CPU, disk I/O, and network usage.
 * Core Animation Profiling Template. Use this template to measure graphics performance and CPU usage. Enable the Flash Updated Regions setting of the template’s Core Animation instrument to see each screen update occurring in your app and watch for unnecessary or unexpected updates.
@@ -217,9 +218,9 @@ There’s no better time to diagnose your app’s energy footprint than when you
 
 
 
-## Thermal Problem
+## Thermal Problem（发热问题）
 
-### What is the thermal problem?
+### What is the thermal problem?（什么是发热问题）
 
 1. As the heat increases, the system decreases heat by reducing the speed of the processors. 
 2. Bad user experience, if running the app make the device burning hot then the user will use the app reluctantly. 
@@ -227,7 +228,7 @@ There’s no better time to diagnose your app’s energy footprint than when you
 
 ![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/iphone_thermal.jpeg?raw=true)
 
-### What cause the thermal problem?
+### What cause the thermal problem?（什么引起的发热）
 
 Thermal state indicates the level of heat generated by logic components as they run apps. The following items will aspect the thermal problem:
 
@@ -236,7 +237,7 @@ Thermal state indicates the level of heat generated by logic components as they 
 * High GPU utilization
 * High I/O activity, for example the network access and file read/write
 
-### What tools or APIs does Apple provide for debuging the thermal or performance problems?
+### What tools or APIs does Apple provide for debuging the thermal or performance problems?（苹果提供了什么工具或API来调试发热及性能问题）
 
 1. NSProcessInfo
 
@@ -297,11 +298,11 @@ Thermal state indicates the level of heat generated by logic components as they 
 5. Instruments
 	
 
-### Third party tools
+### Third party tools（第三方的性能工具）
 
 [火山引擎](https://www.volcengine.com/docs/6431/95178)
 
-### Analyze Huajiao
+### Analyze Huajiao（分析花椒App）
 
 Using iPhone X gets the following Energy Impact gauge
 
@@ -346,18 +347,16 @@ Network
 ![](https://github.com/PeterLu7799/documents/blob/master/energy_impact/network.png?raw=true)
 
 
-### Analyze Huajiao Go Live CPU, GPU and I/O Utilization via Instruments
+### Analyze Huajiao Go Live CPU, GPU and I/O Utilization via Instruments（通过Instruments分析花椒的CPU，GPU和I/O使用情况）
 
 1. CPU utilization
-
-Using Instruments' Time profile to see 
 
 2. GPU utilization
 
 3. I/O utilization 
 
 
-### How to fix the thermal problem
+### How to fix the thermal problem（怎么修复发热问题）
 
 Optimize your app’s performance by monitoring the thermal state and reducing system usage as the thermal state increases. The goal is to decrease the usage of CPU, GPU and I/O. 
 
@@ -372,7 +371,7 @@ Optimize your app’s performance by monitoring the thermal state and reducing s
 
 ## References
 
-[Energy Efficiency Guide for iOS Apps](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/EnergyGuide-iOS/index.html#//apple_ref/doc/uid/TP40015243-CH3-SW1)、
+[Energy Efficiency Guide for iOS Apps](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/EnergyGuide-iOS/index.html#//apple_ref/doc/uid/TP40015243-CH3-SW1)
 
 [Analyzing the Performance of Your Shipping App
 ](https://developer.apple.com/documentation/xcode/analyzing-the-performance-of-your-shipping-app)

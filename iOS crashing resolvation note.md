@@ -6,13 +6,32 @@
 2. 一种内存不足引起的崩溃，没有标准日志有jetsam event report
 
 ## 崩溃日志
+![](https://docs-assets.developer.apple.com/published/eeb9b57faffdc4950af93d82c9becaa6/examining-the-fields-in-a-crash-report-1~dark@2x.png)
 崩溃日志是解决崩溃的关键所以要先得到崩溃日志，有了日志后我们要符号化日志这样才能开始分析。崩溃日志分以下几个部分
 
 ### 头部
+![](https://github.com/PeterLu7799/documents/blob/master/CrashReport/crash_report_header.png?raw=true)
+
+* Incident Identifier: 报告的唯一标识符。 两份报告有不同的标识符
+* CrashReporter Key: 一个匿名的设备标识符。 来自同一台设备的两份报告包含相同的值
+* Hardware Model: 设备型号
+* Process: 崩溃app的文件名称与app信息属性列表中的CFBundleExecutable值相匹配，括号中的数字是进程ID
+* Path: app文件在磁盘上的位置
+* Identifier: app的bundleID：CFBundleIdentifier
+* Version: app的CFBundleVersion和CFBundleShortVersionString的组合
+* Code Type: app的CPU架构
+* Role: 崩溃时分配给进程的task_role，不用关心
+* Parent Process: 启动崩溃进程的进程的名称和进程ID（在方括号中）
+* Coalition: 包含应用程序的进程联盟的名称，不用关心
+* Date/Time: 崩溃时间
+* Launch Time: app启动时间
+* OS Version: iOS版本
+
+### 异常信息
+
+### 调用堆栈
 
 
-	*  exception code
-	*  backtraces
 	Jetsam event reports
 	
     1. How many type of crashing

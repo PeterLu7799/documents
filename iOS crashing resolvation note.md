@@ -6,7 +6,7 @@
 2. 一种内存不足引起的崩溃，没有标准日志有jetsam event report
 
 ## 崩溃日志
-![](https://docs-assets.developer.apple.com/published/eeb9b57faffdc4950af93d82c9becaa6/examining-the-fields-in-a-crash-report-1~dark@2x.png)
+![](https://github.com/PeterLu7799/documents/blob/master/CrashReport/crash_overall.png?raw=true)
 崩溃日志是解决崩溃的关键所以要先得到崩溃日志，有了日志后我们要符号化日志这样才能开始分析。崩溃日志分以下几个部分
 
 ### 头部
@@ -28,6 +28,8 @@
 * OS Version: iOS版本
 
 ### 异常信息
+
+
 
 ### 调用堆栈
 

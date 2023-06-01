@@ -54,8 +54,15 @@
 [Understanding the exception types in a crash report](https://developer.apple.com/documentation/xcode/understanding-the-exception-types-in-a-crash-report#EXCBREAKPOINT-SIGTRAP-and-EXCBADINSTRUCTION-SIGILL)
 
 ### 诊断信息
+诊断信息很有用一定要注意分析理解，但是不是所有的崩溃都有诊断信息。下面是一些诊断信息的例子，
+
+* Dispatch的queue使用不当引起的崩溃
+![](https://github.com/PeterLu7799/documents/blob/master/CrashReport/crash_diagnostic1.png?raw=true)
 
 
+![](https://github.com/PeterLu7799/documents/blob/master/CrashReport/crash_diagnostic2.png?raw=true)
+
+![](https://github.com/PeterLu7799/documents/blob/master/CrashReport/crash_diagnostic3.png?raw=true)
 
 ### 调用堆栈
 

@@ -55,6 +55,20 @@
 
 [Understanding the exception types in a crash report](https://developer.apple.com/documentation/xcode/understanding-the-exception-types-in-a-crash-report#EXCBREAKPOINT-SIGTRAP-and-EXCBADINSTRUCTION-SIGILL)
 
+#### 异常信号
+* SIGABRT--程序中止命令中止信号
+* SIGALRM--程序超时信号
+* SIGFPE--程序浮点异常信号
+* SIGILL--程序非法指令信号
+* SIGHUP--程序终端中止信号
+* SIGINT--程序键盘中断信号
+* SIGKILL--程序结束接收中止信号
+* SIGTERM--程序kill中止信号
+* SIGSTOP--程序键盘中止信号　
+* SIGSEGV--程序无效内存中止信号
+* SIGBUS--程序内存字节未对齐中止信号
+* SIGPIPE--程序Socket发送失败中止信号
+
 ### 诊断信息
 诊断信息很有用一定要注意分析理解，但是不是所有的崩溃都有诊断信息。下面是一些诊断信息的例子，
 
@@ -63,52 +77,49 @@
 
 * 线程卡顿Watchdog发起的崩溃
 ![](https://github.com/PeterLu7799/documents/blob/master/CrashReport/crash_diagnostic2.png?raw=true)
-
+[Addressing watchdog terminations](https://developer.apple.com/documentation/xcode/addressing-watchdog-terminations)
 * 内存访问引起的崩溃包含VM的使用信息
 ![](https://github.com/PeterLu7799/documents/blob/master/CrashReport/crash_diagnostic3.png?raw=true)
+
+[Investigating memory access crashes](https://developer.apple.com/documentation/xcode/investigating-memory-access-crashes)
 
 ### 调用堆栈
 
 
-	Jetsam event reports
+##	OOM日志（Jetsam event reports）
 	
-    1. How many type of crashing
-    2. Describe crash
-    3. Describe deadlock
-    4. Describe OOM
-    5. single device high crashes
+    
 
     
     
-## APM introduction
-    1. first fix the foreground issues
+## 火山引擎APM介绍
+### 火山崩溃分几类
+1. 崩溃
+2. 卡死
+3. OOM
+
+### 崩溃过滤怎么用好
+1.看最新版本的崩溃
+2. 修复前台的崩溃
 
     
-## Case Study
-    1. Player disable recording by default
-    2. Update SDWebImage
-    3. Close Qdas crashing report
-    4. Fixed danmu stuck 
+## 花椒案例
+
+### 花椒降低崩溃的几个里程碑
+1. Player disable recording by default
+2. Update SDWebImage
+3. Close Qdas crashing report
+4. Fixed danmu stuck 
+5. added memory capablities
 
     
-## Tips
-    1. New OS will have new crash for example iOS 16
-    2. Crashing feedback from user 
-    3. ignoring 1 device more crashings
+### Tips
+1. New OS will have new crash for example iOS 16
+2. Crashing feedback from user 
+3. ignoring 1 device more crashings
 
 
-SIGABRT--程序中止命令中止信号
-SIGALRM--程序超时信号
-SIGFPE--程序浮点异常信号
-SIGILL--程序非法指令信号
-SIGHUP--程序终端中止信号
-SIGINT--程序键盘中断信号
-SIGKILL--程序结束接收中止信号
-SIGTERM--程序kill中止信号
-SIGSTOP--程序键盘中止信号　
-SIGSEGV--程序无效内存中止信号
-SIGBUS--程序内存字节未对齐中止信号
-SIGPIPE--程序Socket发送失败中止信号
+
 
 
 

@@ -42,14 +42,16 @@
 * Triggered by Thread or Crashed Thread：引发崩溃的线程
 
 #### 异常类型
-* EXC_BREAKPOINT (SIGTRAP)：A trace trap interrupted the process.
-* EXC_BAD_ACCESS. The crash is due to a memory access issue. See Investigating memory access crashes.
-* EXC_CRASH (SIGABRT). The process terminated because it received a SIGABRT.
-* EXC_CRASH (SIGKILL). The operating system terminated the process.
-* EXC_CRASH (SIGQUIT). The process terminated at the request of another process.
-* EXC_GUARD. The process violated a guarded resource protection.
-* EXC_RESOURCE. The process exceeded a resource consumption limit.
-* EXC_ARITHMETIC. The crashed thread performed an invalid arithmetic operation, such as division by zero or a floating point error.
+* EXC_BREAKPOINT (SIGTRAP)：断点调试时异常退出引起的崩溃，Swift的崩溃也会用这个异常类型
+* EXC_BAD_ACCESS. 访问无效或是非法的内存地址引起的崩溃
+* EXC_CRASH (SIGABRT). 收到了SIGABRT信号引起崩溃，主要是调用了abort()函数，一些OC或是C++的语言异常会调用这个函数，当然还有一些别的情况。
+* EXC_CRASH (SIGKILL) 操作系统结束了app，崩溃日志的异常信息栏中包含原因和异常号。
+* EXC_CRASH (SIGQUIT). 一个进程让另一个退出，比如主app在扩展响应时间长时让其退出。
+* EXC_GUARD. app违反了受保护资源的访问限制，多出现在文件访问上。
+* EXC_RESOURCE. app超出了资源的使用限制
+* EXC_ARITHMETIC. 崩溃线程进行了非法的算数运算，比如除0
+
+更多介绍参考苹果文档：
 
 [Understanding the exception types in a crash report](https://developer.apple.com/documentation/xcode/understanding-the-exception-types-in-a-crash-report#EXCBREAKPOINT-SIGTRAP-and-EXCBADINSTRUCTION-SIGILL)
 
@@ -59,9 +61,10 @@
 * Dispatch的queue使用不当引起的崩溃
 ![](https://github.com/PeterLu7799/documents/blob/master/CrashReport/crash_diagnostic1.png?raw=true)
 
-
+* 线程卡顿Watchdog发起的崩溃
 ![](https://github.com/PeterLu7799/documents/blob/master/CrashReport/crash_diagnostic2.png?raw=true)
 
+* 内存访问引起的崩溃包含VM的使用信息
 ![](https://github.com/PeterLu7799/documents/blob/master/CrashReport/crash_diagnostic3.png?raw=true)
 
 ### 调用堆栈

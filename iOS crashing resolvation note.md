@@ -84,7 +84,11 @@
 [Investigating memory access crashes](https://developer.apple.com/documentation/xcode/investigating-memory-access-crashes)
 
 #### 调用堆栈
-程序
+列出app崩溃时所有运行线程的调用栈。在出现语言异常时还会有Last Exception的调用栈。
+
+注意几点
+1. 调用栈执行顺序是从上到下
+
 
 ###	OOM日志（Jetsam event reports）
 	
@@ -97,7 +101,7 @@
 3. OOM
 
 ### 崩溃过滤怎么用好
-1.看最新版本的崩溃
+1. 看最新版本的崩溃
 2. 修复前台的崩溃
 
     

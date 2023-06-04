@@ -86,6 +86,10 @@
 #### 调用堆栈
 列出app崩溃时所有运行线程的调用栈。在出现语言异常时还会有Last Exception的调用栈。
 
+![](https://github.com/PeterLu7799/documents/blob/master/CrashReport/crash_backtrace.png?raw=true)
+
+
+
 注意几点
 1. 调用栈执行顺序是从上到下
 
